@@ -52,16 +52,16 @@
         <li class="menu" routerLinkActive="active" [routerLink]="[ '/category', 'educational' ]">Навчальні</li>
         <li class="menu" routerLinkActive="active" [routerLink]="[ '/category', 'other' ]">Інше</li>
 
-      </ul> --> 
-
-      <div class="ulMenu">
+      </ul> -->
+      <div class="menuIcon" (click)="menu()"><img src="../../../assets/images/menuIcon.png" alt=""></div>
+      <div class="ulMenu" [style.display]='ulMenu' [style.height]='ulMenuHeight' (window:resize)="onResize($event)">
         <div class="menu" routerLinkActive="active" [routerLink]="[ '/category', 'fiction' ]">Художні</div>
         <div class="menu" routerLinkActive="active" [routerLink]="[ '/category', 'applied' ]">Прикладні</div>
         <div class="menu" routerLinkActive="active" [routerLink]="[ '/category', 'children' ]">Для дітей</div>
         <div class="menu" routerLinkActive="active" [routerLink]="[ '/category', 'educational' ]">Навчальні</div>
         <div class="menu" routerLinkActive="active" [routerLink]="[ '/category', 'other' ]">Інше</div>
       </div>
-
+     
 
 
     </div>

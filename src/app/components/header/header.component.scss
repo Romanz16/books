@@ -4,7 +4,6 @@ $font-SegoeUI: 'SegoeUI';
 $color-grey5: #424242;
 $color-green: #79b260;
 $color-grey3: #6d6d6d;
-$sp: rgba(36, 34, 34, 0.178);
 
 
 header {
@@ -184,9 +183,21 @@ header {
 .header-menu {
   height: 41px;
   border-bottom: 1px solid #d8dce0;
-}
 
+ 
+}
+.menuIcon{
+  width: 41px;
+  height: 41px;
+  display: none;
+  cursor: pointer;
+  img{
+    width: 41px;
+    height: 41px;
+  }
+}
 .ulMenu {
+
   display: flex;
   list-style-type: none;
   margin: 0;
@@ -240,11 +251,23 @@ header {
 }
 
 @media screen and (max-width: 400px) {
-  .ulMenu {
+  .mycontainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+   
+  }
+  .ulMenu{
     flex-direction: column !important;
     align-items: center !important;
     overflow: hidden;
+    display: none;
+    width: 80%;
   }
+  .menuIcon{
+    display: block !important;
+  }
+ 
   .menu {
     z-index: 10;
     line-height: 34px !important;
@@ -252,15 +275,7 @@ header {
     background-color: #ebeef0cb;
     border-top: none;
   }
- 
- .ulMenu :hover {
-    height: 205px !important;
-  }
-  .menu :hover {
-    .ulMenu{
-      height: 205px !important;
-    }
-  }
+
 
   .wrapper {
     justify-content: center !important;
