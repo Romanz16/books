@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+@import url(../src/assets/reset.css);
+*{
+    box-sizing: border-box;
+    
+}
+*:focus{
+    border: none;
+    outline: none;
+
+}
+@font-face {
+    font-family: 'HelveticaLight';
+    src: url(../src/assets/fonts/HelveticaLTStd-Light.otf);
+}
+@font-face {
+    font-family: 'HelveticaRegular';
+    src: url(../src/assets/fonts/HelveticaLTStd-Roman.otf);
+}
+@font-face {
+    font-family: 'SegoeWPBold';
+    src: url(../src/assets/fonts/SegoeWPBold.ttf);
+}
+@font-face {
+    font-family: 'SegoeWPSemiLight';
+    src: url(../src/assets/fonts/SegoeWPSemiLight.ttf);
+}
+@font-face {
+    font-family: 'SegoeWPN';
+    src: url(../src/assets/fonts/SegoeWPN.ttf);
+}
+@font-face {
+    font-family: 'SegoeUI';
+    src: url(../src/assets/fonts/SegoeUI.ttf);
+}
+$font-HelveticaLight: 'HelveticaLight';
+$font-HelveticaRegular: 'HelveticaRegular';
+$font-SegoeWPBold: 'SegoeWPBold';
+$font-SegoeWPSemiLight: 'SegoeWPSemiLight';
+$font-SegoeWPN: 'SegoeWPN';
+$font-SegoeUI: 'SegoeUI';
+$color-green: #79b260;
+$color-grey: #646464;
+$color-grey1: #6b6969;
+$color-grey2: #555454;
+$color-grey3: #6d6d6d;
+$color-grey4: #525252;
+$color-grey5: #424242;
+$color-grey6: #5b5b5b;
+$color-black: #000000;
+$color-light-grey1: #dddddd;
+$color-light-grey2: #d8d8d8;
+$color-light-grey3: #ced3d6;
+$color-light-grey4: #c9c9c9;
+$color-rose: #f05356;
+
+.mycontainer{
+    margin: 0 auto;
+    max-width: 1024px;
+    font-family: $font-HelveticaLight;
+}

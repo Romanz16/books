@@ -1,0 +1,356 @@
+<!-- <p>category works!{{discountId}}</p> -->
+<div class="content">
+  <div class="filter">
+    <form>
+      <div class="container-fluid">
+
+
+        <div class="categories">
+          <h2>Категорії</h2>
+          <div class="cat" routerLinkActive="active" [routerLink]="[ '/category', 'all' ]">Всі</div>
+
+          <div class="cat" routerLinkActive="active" [routerLink]="[ '/category', 'fiction' ]">Художні</div>
+          <div *ngIf="(catId==='fiction')">
+            <div class="pcat" routerLinkActive="active" [routerLink]="[ '/category', 'fiction','modern' ]">Сучасні
+              автори
+            </div>
+            <div class="pcat" routerLinkActive="active" [routerLink]="[ '/category', 'fiction','romanaboutlove' ]">
+              Романи про кохання</div>
+            <div class="pcat" routerLinkActive="active"
+              [routerLink]="[ '/category', 'fiction','romandiscoveryhistory' ]">Пригодницько-історичні романи</div>
+            <div class="pcat">Детективи</div>
+            <div class="pcat">Фантастика, фентезі</div>
+            <div class="pcat">Трилери, жахи</div>
+            <div class="pcat">Класика</div>
+            <div class="pcat">Книги для підлітків</div>
+          </div>
+
+          <div class="cat" routerLinkActive="active" [routerLink]="[ '/category', 'applied' ]">Прикладні</div>
+          <div *ngIf="(catId==='applied')">
+            <div class="pcat">Кулінарія</div>
+            <div class="pcat">Поради</div>
+            <div class="pcat">Компютери, IT</div>
+            <div class="pcat">Здоров’я та краса</div>
+            <div class="pcat">Вправні руки</div>
+            <div class="pcat">Бізнес і саморозвиток</div>
+            <div class="pcat">Психологія</div>
+            <div class="pcat">Світ захоплень</div>
+            <div class="pcat">Духовна література</div>
+            <div class="pcat">Історія і факти</div>
+            <div class="pcat">Світ таємниць та загадок</div>
+          </div>
+
+          <div class="cat" routerLinkActive="active" [routerLink]="[ '/category', 'children' ]">Для дітей</div>
+          <div *ngIf="(catId==='children')">
+            <div class="pcat">Дітям до 4-х років</div>
+            <div class="pcat">Дітям 4-6 років</div>
+            <div class="pcat">Дітям 7-12 років</div>
+            <div class="pcat">Дітям від 12 років</div>
+          </div>
+
+          <div class="cat" routerLinkActive="active" [routerLink]="[ '/category', 'educational' ]">Навчальні</div>
+          <div *ngIf="(catId==='educational')">
+            <div class="pcat">Дошкільнятам</div>
+            <div class="pcat">Школярам і абітурієнтам</div>
+            <div class="pcat">Студентам і аспірантам</div>
+            <div class="pcat">Педагогам</div>
+            <div class="pcat">Музична школа</div>
+            <div class="pcat">Школа мистецтв</div>
+          </div>
+
+          <div class="cat" routerLinkActive="active" [routerLink]="[ '/category', 'other' ]">Інше</div>
+          <div *ngIf="(catId==='other')">
+            <div class="pcat">Спорт</div>
+            <div class="pcat">Для дорослих</div>
+            <div class="pcat">Політика</div>
+          </div>
+        </div>
+
+
+
+        <div class="form-group">
+          <div class="price">
+            <h2> Вартість:</h2>
+            <div>({{price[0]}}$-{{price[1]}}$)</div>
+            <npn-slider id="price" [min]="0" [max]="300" (onChange)="onSliderChangePrice($event)" [step]="10"
+              [showStepIndicator]="true"></npn-slider>
+          </div>
+        </div>
+
+        <!-- <div class="form-group">
+                    <label for="formControlRange">Ціна {{price}}</label>
+                    <input type="range" [(ngModel)]="price" name="price" class="form-control-range" min="0" max="100" step="10" id="formControlRange"
+                        list="tickmarks">
+                    <datalist id="tickmarks">
+                        <option value="0" label="0"></option>
+                        <option value="10"></option>
+                        <option value="20"></option>
+                        <option value="30"></option>
+                        <option value="40"></option>
+                        <option value="50" label="50"></option>
+                        <option value="60"></option>
+                        <option value="70"></option>
+                        <option value="80"></option>
+                        <option value="90"></option>
+                        <option value="100" label="100"></option>
+                    </datalist>
+                </div> -->
+
+        <!-- <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Default checkbox
+                    </label>
+                </div> -->
+
+
+        <div class="form-group ">
+          <div class="author">
+            <h2>Автор</h2>
+            <div>
+              <select id="author" name="author" class="form-control">
+                <option selected>Choose...</option>
+                <option value="1">ТарасШевченко</option>
+                <option value="2">Леся Українка</option>
+                <option value="3">Іван Франко</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="price">
+            <h2> Рік:</h2>
+            <div>({{year[0]}}-{{year[1]}})</div>
+            <npn-slider id="year" [min]="1990" [max]="2019" (onChange)="onSliderChangeYear($event)" [step]="1"
+              [showStepIndicator]="true"></npn-slider>
+          </div>
+        </div>
+
+        <div class="form-group ">
+          <div class="author">
+            <h2>Обкладинка</h2>
+            <div>
+              <select id="author" name="author" class="form-control">
+                <option selected>Choose...</option>
+                <option value="1">Шкіряна</option>
+                <option value="2">Тверда</option>
+                <option value="3">Мяка</option>
+                <option value="4">Інтегральна</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group ">
+          <div class="publishing">
+            <h2>Видавництво</h2>
+            <div>
+              <select id="publishing" name="publishing" class="form-control">
+                <option selected>Choose...</option>
+                <option value="1">Азбука</option>
+                <option value="2">КМ-Букс</option>
+                <option value="3">Манн, Иванов и Фербер</option>
+                <option value="4">Наш Формат</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+<!-- </div> -->
+
+  <div class="books">
+    <div class="booksWrapper">
+    <div class="item" routerLinkActive="active" [routerLink]="[ '/product', 'the_hare_with_amber_eyes' ]">
+      <img src="../../../../assets/images/Layer_56.png" alt="">
+      <div class="title">
+        The Hare With Amber Eyes
+      </div>
+      <div class="price">
+        $80
+      </div>
+    </div>
+    <div class="item" routerLinkActive="active" [routerLink]="[ '/product', 'the_war_of_art' ]">
+      <img src="../../../../assets/images/Layer_59.png" alt="">
+      <div class="title">
+        The war of Art
+      </div>
+      <div class="price">
+        $25
+      </div>
+    </div>
+    <div class="item">
+      <img src="../../../../assets/images/Layer_58.png" alt="">
+      <div class="title">
+        The Hare With Amber Eyes The Hare With Amber Eyes
+      </div>
+      <div class="price">
+        $80
+      </div>
+    </div>
+    <div class="item">
+      <img src="../../../../assets/images/Layer_108.png" alt="">
+      <div class="title">
+        The Immortals of Meluha
+      </div>
+      <div class="price">
+        $60
+      </div>
+    </div>
+    <div class="item">
+      <img src="../../../../assets/images/Layer_106.png" alt="">
+      <div class="title">
+        The Hare With Amber Eyes
+      </div>
+      <div class="price">
+        $125
+      </div>
+    </div>
+    <div class="item">
+      <img src="../../../../assets/images/Layer_107.png" alt="">
+      <div class="title">
+        The Hare With Amber Eyes
+      </div>
+      <div class="price">
+        $120
+      </div>
+    </div>
+    <div class="item">
+      <img src="../../../../assets/images/Layer_108.png" alt="">
+      <div class="title">
+        The Hare With Amber Eyes
+      </div>
+      <div class="price">
+        $80
+      </div>
+    </div>
+    <div class="item">
+      <img src="../../../../assets/images/Layer_109.png" alt="">
+      <div class="title">
+        The Hare With Amber Eyes
+      </div>
+      <div class="price">
+        $60
+      </div>
+    </div>
+    <div class="item">
+      <img src="../../../../assets/images/Layer_59.png" alt="">
+      <div class="title">
+        The war of Art
+      </div>
+      <div class="price">
+        $25
+      </div>
+    </div>
+    <div class="item">
+      <img src="../../../../assets/images/Layer_58.png" alt="">
+      <div class="title">
+        The Hare With Amber Eyes The Hare With Amber Eyes
+      </div>
+      <div class="price">
+        $80
+      </div>
+    </div>
+    <div class="item">
+      <img src="../../../../assets/images/Layer_107.png" alt="">
+      <div class="title">
+        The Immortals of Meluha
+      </div>
+      <div class="price">
+        $60
+      </div>
+    </div>
+    <div class="item">
+      <img src="../../../../assets/images/Layer_56.png" alt="">
+      <div class="title">
+        The Hare With Amber Eyes
+      </div>
+      <div class="price">
+        $80
+      </div>
+    </div>
+    <div class="item">
+      <img src="../../../../assets/images/Layer_59.png" alt="">
+      <div class="title">
+        The war of Art
+      </div>
+      <div class="price">
+        $25
+      </div>
+    </div>
+    <div class="item">
+      <img src="../../../../assets/images/Layer_58.png" alt="">
+      <div class="title">
+        The Hare With Amber Eyes The Hare With Amber Eyes
+      </div>
+      <div class="price">
+        $80
+      </div>
+    </div>
+    <div class="item">
+      <img src="../../../../assets/images/Layer_108.png" alt="">
+      <div class="title">
+        The Immortals of Meluha
+      </div>
+      <div class="price">
+        $60
+      </div>
+    </div>
+    <div class="item">
+      <img src="../../../../assets/images/Layer_106.png" alt="">
+      <div class="title">
+        The Hare With Amber Eyes
+      </div>
+      <div class="price">
+        $125
+      </div>
+    </div>
+    <div class="item">
+      <img src="../../../../assets/images/Layer_107.png" alt="">
+      <div class="title">
+        The Hare With Amber Eyes
+      </div>
+      <div class="price">
+        $120
+      </div>
+    </div>
+    <div class="item">
+      <img src="../../../../assets/images/Layer_108.png" alt="">
+      <div class="title">
+        The Hare With Amber Eyes
+      </div>
+      <div class="price">
+        $80
+      </div>
+    </div>
+    <div class="item">
+      <img src="../../../../assets/images/Layer_109.png" alt="">
+      <div class="title">
+        The Hare With Amber Eyes
+      </div>
+      <div class="price">
+        $60
+      </div>
+    </div>
+    <div class="item">
+      <img src="../../../../assets/images/Layer_59.png" alt="">
+      <div class="title">
+        The war of Art
+      </div>
+      <div class="price">
+        $25
+      </div>
+    </div>
+
+  </div>
+  <div class="pagination">
+    <div>1</div>
+    <div>2</div>
+    <div class="active">3</div>
+    <div>4</div>
+    <div>5</div>
+  </div>
+</div>
+</div>

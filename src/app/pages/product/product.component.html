@@ -1,0 +1,103 @@
+<div class="content">
+  <div class="breadcrumbs">
+    <a [routerLink]="[ '/home']">Головна</a><span> >> </span>
+    <a [routerLink]="[ '/category', 'fiction' ]">Категорія</a><span> >> </span>
+    <a [routerLink]="[ '/product', 'the_hare_with_amber_eyes' ]">Книга</a>
+
+  </div>
+
+  <div class="product">
+    <div class="image"><img src="../../../assets/images/Layer_213.png" alt=""></div>
+    <div class="description">
+      <div class="title">
+      Star Wars Episode I
+      </div>
+      <div class="text">
+        The Star Wars Episode I: The Phantom Menace novelization was written by Terry Brooks and published on April 21,
+        1999 by Del Rey. It is based on the script of the movie of the same name. Narration for the abridged audio
+        version was performed by Michael Cumpsty. The unabridged version was performed by Alexander Adams. On January
+        31, 2012, a new paperback edition was released with a new short story, End Game, by James Luceno featured
+        inside.
+      </div>
+      <div class="price">
+
+        <div class="productPrice">
+          <div class="detailPrice">Наша ціна : <span>80$</span>
+            <div>Знижка 30%</div>
+          </div>
+          <div class="addBtn"><button class="btn btn-dark">Додати в корзину</button></div>
+        </div>
+        <div class="card1">
+          <img src="../../../assets/images/Layer_207.png" alt="">
+          <img src="../../../assets/images/Layer_208.png" alt="">
+          <img src="../../../assets/images/Layer_209.png" alt="">
+          <img src="../../../assets/images/paypal.png" alt="">
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="details">
+
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a routerLinkActive="active" routerLink="infoBook" class="nav-item nav-link active" id="nav-home-tab"
+          data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Про книгу</a>
+        <a routerLinkActive="active" routerLink="detailsBook" class="nav-item nav-link" id="nav-profile-tab"
+          data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Інша
+          інформація</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+
+    <div class="comment">
+      <div class="title">
+        Відгуки про книгу
+      </div>
+      <div class="review">
+        <div class="avatar">
+          <img src="../../../assets/images/comment.png" alt="">
+          <div class="name">Name 1</div>
+        </div>
+        <div class="message">
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+          standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+          make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+          typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+          sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+          PageMaker including versions of Lorem Ipsum.
+        </div>
+
+      </div>
+      <div class="hr"></div>
+      <div class="review">
+        <div class="avatar">
+          <img src="../../../assets/images/comment.png" alt="">
+          <div class="name">Name 2</div>
+        </div>
+        <div class="message">
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+          standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+          make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+          typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+          sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+          PageMaker including versions of Lorem Ipsum.
+        </div>
+      </div>
+      <div class="title">
+        Написати відгук
+      </div>
+      <form name="comment" class="form">
+        <div class="form-group">
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+       <div class="btnR"> <button class="btn btn-dark pull-righ">Відправити</button></div>
+      
+      </form>
+    </div>
+  </div>
+</div>

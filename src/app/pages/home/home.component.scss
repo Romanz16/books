@@ -1,0 +1,43 @@
+$font-HelveticaRegular: 'HelveticaRegular';
+
+.content {
+  min-height: calc(100vh - 390px);
+  margin-bottom: 25px;
+
+  .slider {
+    margin: 15px 0;
+
+    .carousel-control-prev:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .carousel-control-next:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+  }
+
+  .tab-content {
+    border-left: 1px solid #d8dce0;
+    border-right: 1px solid #d8dce0;
+    border-bottom: 1px solid #d8dce0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 5px;
+  }
+}
+
+.nav-link {
+  text-decoration: none;
+  text-shadow: 1px 1px 0 #ffffff;
+  color: #6b6969;
+  font-family: $font-HelveticaRegular;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 30px;
+ 
+}
+.active {
+  color: #464646 !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+}

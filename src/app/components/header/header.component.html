@@ -1,0 +1,69 @@
+<header>
+  <div class="header-top">
+    <div class="mycontainer">
+      <a href="">Sign in</a>
+      <a href="">My Account</a>
+      <a href="">Help</a>
+    </div>
+  </div>
+  <div class="header-center">
+    <div class="mycontainer">
+      <div class="wrapper">
+        <div class="logo" routerLink="home">
+          <img src="../../../assets/images/logo.png" alt="">
+        </div>
+        <div class="search">
+
+          <input type="text">
+          <!-- <button type="button" class="btn btn-success">Пошук</button> -->
+          <div><img src="../../../assets/images/Shape_7.png" alt="">
+            <span class="searchBtn">Search</span>
+          </div>
+
+        </div>
+        <div class="cart">
+          <div class="cartList">
+            <div class="items">
+              <img src="../../../assets/images/Shape_9.png" alt="">
+              Your cart <span>(2 items)</span>
+            </div>
+            <div class="price">
+              $125.0 <button type="button" class="btn btn-dark" value="">checkout</button>
+            </div>
+          </div>
+          <div class="wishList">
+            <img src="../../../assets/images/Shape_10.png" alt="">
+            <div><span>Wish list</span>
+              <div>20</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <nav class="header-menu">
+    <div class="mycontainer">
+      <!-- <ul class="ulMenu" id="ulMenu">
+        <li class="menu">Меню</li>
+        <li class="menu" routerLinkActive="active" [routerLink]="[ '/category', 'fiction' ]">Художні</li>
+        <li class="menu" routerLinkActive="active" [routerLink]="[ '/category', 'applied' ]">Прикладні</li>
+        <li class="menu" routerLinkActive="active" [routerLink]="[ '/category', 'children' ]">Для&nbsp;дітей</li>
+        <li class="menu" routerLinkActive="active" [routerLink]="[ '/category', 'educational' ]">Навчальні</li>
+        <li class="menu" routerLinkActive="active" [routerLink]="[ '/category', 'other' ]">Інше</li>
+
+      </ul> --> 
+
+      <div class="ulMenu">
+        <div class="menu" routerLinkActive="active" [routerLink]="[ '/category', 'fiction' ]">Художні</div>
+        <div class="menu" routerLinkActive="active" [routerLink]="[ '/category', 'applied' ]">Прикладні</div>
+        <div class="menu" routerLinkActive="active" [routerLink]="[ '/category', 'children' ]">Для дітей</div>
+        <div class="menu" routerLinkActive="active" [routerLink]="[ '/category', 'educational' ]">Навчальні</div>
+        <div class="menu" routerLinkActive="active" [routerLink]="[ '/category', 'other' ]">Інше</div>
+      </div>
+
+
+
+    </div>
+  </nav>
+</header>

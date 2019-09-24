@@ -1,0 +1,190 @@
+$font-SegoeUI: 'SegoeUI';
+$font-SegoeWPBold: 'SegoeWPBold';
+$font-SegoeWPSemiLight: 'SegoeWPSemiLight';
+$font-HelveticaRegular: 'HelveticaRegular';
+$color-green: #79b260;
+
+.content {
+  padding: 15px 0 25px 0;
+  display: flex;
+  justify-content: space-around;
+
+  .filter {
+    width: 188px;
+    min-height: 864px;
+    border: 1px solid #d8dce0;
+    border-radius: 5px;
+    margin-right: 9px;
+
+    .container-fluid {
+      margin: 0;
+      padding: 0;
+    }
+
+    .categories {
+      h2 {
+        padding: 3px 8px;
+        color: #6b6969;
+        font-family: $font-SegoeUI;
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 30px;
+      }
+
+      .cat {
+        width: 100%;
+        padding: 1px 2px 1px 8px;
+        color: #555454;
+        font-size: 18px;
+        line-height: 26.67px;
+        font-family: $font-SegoeUI;
+        font-weight: 600;
+      }
+
+      .cat:hover,
+      .cat.active {
+        color: white;
+        background-color: $color-green;
+      }
+
+      .pcat {
+        width: 100%;
+        padding: 0 2px 0 12px;
+        color: #555454;
+        font-family: $font-SegoeUI;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 26.67px;
+      }
+
+      .pcat:hover,
+      .pcat.active {
+        color: white;
+        background-color: $color-green;
+      }
+
+    }
+
+    .price,
+    .author,
+    .publishing {
+      margin: 15px 0;
+      padding: 3px 8px;
+      font-family: $font-SegoeUI;
+      color: #555454;
+      font-size: 18px;
+      line-height: 22px;
+      font-weight: 400;
+
+      h2 {
+
+        color: #6b6969;
+        font-family: $font-SegoeUI;
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 30px;
+      }
+
+      div {
+        padding: 4px 0;
+        text-align: center;
+        color: $color-green;
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 300;
+      }
+    }
+  }
+
+  .books {
+    width: 798px;
+    min-height: 1118px;
+    border: 1px solid #d8dce0;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .booksWrapper {
+
+    display: flex;
+    justify-content: space-around;
+    align-content: flex-start;
+    flex-wrap: wrap;
+
+    .item:hover {
+      cursor: pointer;
+
+      img {
+        padding: 0px;
+        transition: 0.3s;
+      }
+    }
+
+    .item {
+      margin: 15px;
+      width: 119px;
+      text-align: center;
+      color: #595959;
+      font-family: $font-SegoeWPSemiLight;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 16px;
+
+      img {
+        padding: 5px;
+        width: 119px;
+        height: 172px;
+      }
+
+      .title {
+        width: 119px;
+        height: 30px;
+        overflow: hidden;
+      }
+
+      .price {
+        margin-top: 9px;
+        color: #f05356;
+        font-family: $font-HelveticaRegular;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 20px;
+      }
+    }
+  }
+
+}
+
+label {
+  margin: 15px 0 15px 0;
+  font-family: $font-SegoeUI;
+  color: #555454;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.pagination {
+  position: absolute;
+  bottom: 0;
+  right: 25px;
+  color: #646464;
+  font-family: $font-HelveticaRegular;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 30px;
+  div{
+    margin: 0 3px;
+    padding: 0 8px;
+    cursor: pointer;
+  }
+  .active{
+    background-color: #e0e0e0;
+    border-bottom: 4px solid $color-green;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .price {
+    display: none;
+  }
+}

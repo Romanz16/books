@@ -1,0 +1,63 @@
+$font-SegoeWPSemiLight: 'SegoeWPSemiLight';
+$font-HelveticaRegular: 'HelveticaRegular';
+
+.content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-content: center;
+  .item:hover {
+    cursor: pointer;
+    img {
+      padding: 0px;
+      transition: 0.3s;
+    }
+  }
+  .item {
+    margin: 15px;
+    width: 119px;
+    text-align: center;
+    color: #595959;
+    font-family: $font-SegoeWPSemiLight;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 16px;
+    position: relative;
+
+    .offers {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      width: 50px;
+      height: 50px;
+      padding: 12px 0;
+      color: #ffffff;
+      font-family: $font-HelveticaRegular;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 26px;
+      background-image: url(../../../../assets/images/offers.png);
+    }
+
+    img {
+      padding: 5px;
+      width: 119px;
+      height: 172px;
+    }
+
+    .title {
+      width: 119px;
+      height: 30px;
+      overflow: hidden;
+    }
+
+    .price {
+      margin-top: 9px;
+      color: #f05356;
+      font-family: $font-HelveticaRegular;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 20px;
+    }
+  }
+}

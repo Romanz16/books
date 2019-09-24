@@ -1,0 +1,17 @@
+$font-SegoeUI: 'SegoeUI';
+
+.content {
+  color: #7e7e7e;
+  font-family: $font-SegoeUI;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 26px;
+  padding: 25px;
+}
+.title{
+  
+  span{
+    padding-left: 5px;
+    font-weight: 400;
+  }
+}
