@@ -9,25 +9,41 @@ import { ProductComponent } from './pages/product/product.component';
 import { InfoAboutBookComponent } from './pages/product/info-about-book/info-about-book.component';
 import { DetailsBookComponent } from './pages/product/details-book/details-book.component';
 
+import { AdminComponent } from './admin/admin.component';
+import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
+import { AdminSubCategoryComponent } from './admin/admin-sub-category/admin-sub-category.component';
+import { AdminProductComponent } from './admin/admin-product/admin-product.component';
+
 const routes: Routes = [
-  { path: '', redirectTo: '/home/bestSellers', pathMatch: 'full' },
+  { path: '', redirectTo: '/home/newArrivals', pathMatch: 'full' },
   {
     path: 'home', component: HomeComponent, children: [
-      { path: '', redirectTo: 'bestSellers', pathMatch: 'full' },
+      { path: '', redirectTo: 'newArrivals', pathMatch: 'full' },
       { path: 'bestSellers', component: BestSellersComponent },
       { path: 'newArrivals', component: NewArrivalsComponent },
       { path: 'specialOffers', component: SpecialOffersComponent }
     ]
   },
-  { path: 'category/:id', component: CategoryComponent },
-  { path: 'category/:id/:pid', component: CategoryComponent },
+  { path: 'category/:cat', component: CategoryComponent },
+  { path: 'category/:cat/:subcat', component: CategoryComponent },
   {
-    path: 'product/:id', component: ProductComponent, children: [
+    // path: 'product/:id', component: ProductComponent, children: [
+    path: 'category/:cat/:subcat?/:product', component: ProductComponent, children: [
+      { path: '', redirectTo: 'infoBook', pathMatch: 'full' },
       { path: 'infoBook', component: InfoAboutBookComponent },
       { path: 'detailsBook', component: DetailsBookComponent }
     ]
   },
-  { path: '**', redirectTo: '/home/bestSellers' },
+  {
+    path: 'admin', component: AdminComponent, children: [
+      { path: '', redirectTo: 'category', pathMatch: 'full' },
+      { path: 'category', component: AdminCategoryComponent },
+      { path: 'subcategory', component: AdminSubCategoryComponent },
+      { path: 'product', component: AdminProductComponent },
+
+    ]
+  },
+  { path: '**', redirectTo: '/home/newArrivals' },
 ];
 
 @NgModule({

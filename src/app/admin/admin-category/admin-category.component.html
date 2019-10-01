@@ -1,0 +1,38 @@
+<h1>{{pageTitle}}</h1>
+<form #form="ngForm" (submit)="onSubmit(form)">
+  <div class="form-group">
+    <input type="hidden" name="id" #id="ngModel" [(ngModel)]="formData.id">
+    <input [(ngModel)]="formData.title" name="title" type="text" #qq="ngModel" class="form-control"
+      placeholder="title here..." required pattern="[a-zA-Zа-яА-Я0-9\sІіЩщЇїЄє/,-/’]{3,20}">
+    <div *ngIf="qq.invalid && qq.touched">Заповніть поле(символи латиниці, кирилиці та цифри, довжина поля 3-20 символів)</div>
+  </div>
+  <div class="form-group"> 
+    <button [disabled]="form.invalid" *ngIf="!editStatus" type="submit" class="btn btn-block btn-dark">Додати</button>
+    <button [disabled]="form.invalid" *ngIf="editStatus" (click)="saveEditCategory(form)" type="submit"
+      class="btn btn-block btn-dark">Зберегти зміни</button> </div>
+</form>
+<hr>
+<table class='table' st-table='displayPunchcards' st-safe-src='punchcards'>
+  <thead>
+    <tr>
+      <th scope="col" (click)="sort('id',0)">#id <i class="fa fa-fw fa-sort"></i></th>
+      <th scope="col" (click)="sort('title',1)">Title <i class="fa fa-fw fa-sort"></i></th>
+      <th scope="col" (click)="sort('alias',2)">Alias <i class="fa fa-fw fa-sort"></i></th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cat of adminCategories; let i=index">
+      <td>{{cat.id}}</td>
+      <td>{{cat.title}}</td>
+      <td>{{cat.alias}}</td>
+      <td>
+        <button class="btn btn-dark" (click)="editCategory(cat)">Edit</button>
+      </td>
+      <td>
+        <button [disabled]="editStatus" class="btn btn-dark" (click)="deleteCategory(cat)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

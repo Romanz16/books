@@ -1,7 +1,6 @@
 <div class="content">
-<div class="title">Рік видання:<span>2019</span></div>
-<div class="title">Автор:<span>Тарас Шевченко</span></div>
-<div class="title">Палітурка:<span>Тверда</span></div>
-<div class="title">Видавництво:<span>Наш Формат</span></div>
-
+<div class="title">Рік видання:<span>{{product.year}}</span></div>
+<div class="title">Автор:<span *ngFor="let author of product.author">{{author}}</span></div>
+<div class="title">Палітурка:<span>{{product.binding}}</span></div>
+<div class="title">Видавництво:<span>{{product.publishingHouse}}</span></div>
 </div>

@@ -1,28 +1,26 @@
 <div class="content">
   <div class="breadcrumbs">
-    <a [routerLink]="[ '/home']">Головна</a><span> >> </span>
-    <a [routerLink]="[ '/category', 'fiction' ]">Категорія</a><span> >> </span>
-    <a [routerLink]="[ '/product', 'the_hare_with_amber_eyes' ]">Книга</a>
+    <a [routerLink]="[ '/home/newArrivals']">Головна</a><span> >> </span>
+    <a [routerLink]="[ '/category', product.catAlias ]">{{product.catTitle}}</a><span> >> </span>
+    <a [routerLink]="[ '/category', product.catAlias, product.subCatAlias ]">{{product.subCatTitle}}</a><span> >>
+    </span>
+    <a [routerLink]="[ '/category', product.catAlias, product.subCatAlias, product.alias ]">{{product.title}}</a>
 
   </div>
 
   <div class="product">
-    <div class="image"><img src="../../../assets/images/Layer_213.png" alt=""></div>
+    <div class="image"><img [src]=product.img alt=""></div>
     <div class="description">
       <div class="title">
-      Star Wars Episode I
+        {{product.title}}
       </div>
       <div class="text">
-        The Star Wars Episode I: The Phantom Menace novelization was written by Terry Brooks and published on April 21,
-        1999 by Del Rey. It is based on the script of the movie of the same name. Narration for the abridged audio
-        version was performed by Michael Cumpsty. The unabridged version was performed by Alexander Adams. On January
-        31, 2012, a new paperback edition was released with a new short story, End Game, by James Luceno featured
-        inside.
+        {{product.description}}
       </div>
       <div class="price">
 
         <div class="productPrice">
-          <div class="detailPrice">Наша ціна : <span>80$</span>
+          <div class="detailPrice">Наша ціна : <span> {{product.price}}₴</span>
             <div>Знижка 30%</div>
           </div>
           <div class="addBtn"><button class="btn btn-dark">Додати в корзину</button></div>
@@ -41,17 +39,28 @@
 
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a routerLinkActive="active" routerLink="infoBook" class="nav-item nav-link active" id="nav-home-tab"
+        <!-- <a routerLinkActive="active" routerLink='infoBook' class="nav-item nav-link active" id="nav-home-tab"
           data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Про книгу</a>
-        <a routerLinkActive="active" routerLink="detailsBook" class="nav-item nav-link" id="nav-profile-tab"
+        <a routerLinkActive="active" routerLink='detailsBook' class="nav-item nav-link" id="nav-profile-tab"
           data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Інша
+          інформація</a> -->
+        <a routerLinkActive="active" [routerLink]="[ '/category', product.catAlias, product.subCatAlias, product.alias, 'infoBook']" class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+          aria-controls="nav-home" aria-selected="true">Про книгу</a>
+        <a routerLinkActive="active" [routerLink]="[ '/category', product.catAlias, product.subCatAlias, product.alias, 'detailsBook' ]" class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+          aria-controls="nav-profile" aria-selected="false">Інша
           інформація</a>
+         
       </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-        <router-outlet></router-outlet>
+        
+      <div *ngIf="route.children[0].snapshot.url.join('') === 'infoBook'" class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          <app-info-about-book></app-info-about-book>
+        </div>
+      <div *ngIf="route.children[0].snapshot.url.join('') === 'detailsBook'" class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <app-details-book></app-details-book>
       </div>
+
     </div>
 
     <div class="comment">
@@ -95,8 +104,8 @@
         <div class="form-group">
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
-       <div class="btnR"> <button class="btn btn-dark pull-righ">Відправити</button></div>
-      
+        <div class="btnR"> <button class="btn btn-dark pull-righ">Відправити</button></div>
+
       </form>
     </div>
   </div>

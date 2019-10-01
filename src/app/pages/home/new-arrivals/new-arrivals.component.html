@@ -1,16 +1,16 @@
 <div class="content">
  
-  <div class="item"  routerLinkActive="active" [routerLink]="[ '/product', 'the_hare_with_amber_eyes','infoBook' ]">
+  <div class="item" *ngFor="let prod of products" routerLinkActive="active" [routerLink]="[ '/category',prod.catAlias,prod.subCatAlias,prod.alias,'infoBook' ]">
     <div class="offers">-30%</div>
-    <img src="../../../../assets/images/Layer_56.png" alt="">
-    <div class="title">
-      The Hare With Amber Eyes
+    <img [src]=prod.img [alt]=prod.title [title]=prod.title>
+    <div class="title"> 
+      {{prod.title}}
     </div>
     <div class="price">
-      $80
+      {{prod.price}} грн
     </div>
-  </div>
-  <div class="item"  routerLinkActive="active" [routerLink]="[ '/product', 'the_war_of_art','infoBook' ]">
+  </div>  
+  <!-- <div class="item"  routerLinkActive="active" [routerLink]="[ '/product', 'the_war_of_art','infoBook' ]">
     <img src="../../../../assets/images/Layer_59.png" alt="">
     <div class="title">
       The war of Art
@@ -109,5 +109,5 @@
     <div class="price">
       $60
     </div>
-  </div>
+  </div> -->
 </div>
