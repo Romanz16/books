@@ -30,6 +30,10 @@ export class CategoryComponent implements OnInit {
 
   adminSubCategories: Array<ISubCategory>;
   adminCategories: Array<ICategory>;
+
+  min: number;
+  max: number;
+  p: number = 1;
   constructor(private route: ActivatedRoute,
     private location: Location, private subcategoryService: SubCategoryService,
     private categoryService: CategoryService, private firestore: AngularFirestore,
@@ -41,6 +45,9 @@ export class CategoryComponent implements OnInit {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.category = params.get('cat');
       this.subcat = params.get('subcat');
+      this.price[0] = this.min;
+      this.price[1] = this.max;
+      // this.maxprice = this.maxPrice();
     });
     this.getCategories();
     this.getSubCategories();
@@ -138,46 +145,63 @@ export class CategoryComponent implements OnInit {
     this.adminSubCategories = this.adminSubCategories.filter(elem => { elem.id === id; });
   }
   public minPrice(): number {
-    let min = 150;
+    this.min = 150;
     if (this.subcat) {
       this.products.filter(el => {
         if (el.subCatAlias === this.subcat) {
-          if (+el.price < min) {
-            min = +el.price;
+          if (+el.price < this.min) {
+            this.min = +el.price;
           }
         }
       });
     } else if (this.category) {
-      this.products.filter(el => {
-        if (el.catAlias === this.category) {
-          if (+el.price < min) {
-            min = +el.price;
+      if (this.category === 'all') {
+        this.products.filter(el => {
+          if (+el.price < this.min) {
+            this.min = +el.price;
           }
-        }
-      });
+        });
+      } else {
+        this.products.filter(el => {
+          if (el.catAlias === this.category) {
+            if (+el.price < this.min) {
+              this.min = +el.price;
+            }
+          }
+        });
+      }
     }
-    return min;
+    return Math.round(this.min - 1);
   }
   public maxPrice(): number {
-    let max = 150;
+    this.max = 150;
     if (this.subcat) {
       this.products.filter(el => {
         if (el.subCatAlias === this.subcat) {
-          if (+el.price > max) {
-            max = +el.price;
+          if (+el.price > this.max) {
+            this.max = +el.price;
           }
         }
       });
     } else if (this.category) {
-      this.products.filter(el => {
-        if (el.catAlias === this.category) {
-          if (+el.price > max) {
-            max = +el.price;
+      if (this.category === 'all') {
+        this.products.filter(el => {
+          if (+el.price > this.max) {
+            this.max = +el.price;
           }
-        }
-      });
+        });
+      } else {
+        this.products.filter(el => {
+          if (el.catAlias === this.category) {
+            if (+el.price > this.max) {
+              this.max = +el.price;
+            }
+          }
+        });
+      }
     }
-    return max;
+    // console.log('max',this.price[1]);
+    return Math.round(this.max + 1);
   }
 
   public minYear(): number {
@@ -191,13 +215,21 @@ export class CategoryComponent implements OnInit {
         }
       });
     } else if (this.category) {
-      this.products.filter(el => {
-        if (el.catAlias === this.category) {
+      if (this.category === 'all') {
+        this.products.filter(el => {
           if (+el.year < min) {
             min = +el.year;
           }
-        }
-      });
+        });
+      } else {
+        this.products.filter(el => {
+          if (el.catAlias === this.category) {
+            if (+el.year < min) {
+              min = +el.year;
+            }
+          }
+        });
+      }
     }
     return min;
   }
@@ -212,13 +244,21 @@ export class CategoryComponent implements OnInit {
         }
       });
     } else if (this.category) {
-      this.products.filter(el => {
-        if (el.catAlias === this.category) {
+      if (this.category === 'all') {
+        this.products.filter(el => {
           if (+el.year > max) {
             max = +el.year;
           }
-        }
-      });
+        });
+      } else {
+        this.products.filter(el => {
+          if (el.catAlias === this.category) {
+            if (+el.year > max) {
+              max = +el.year;
+            }
+          }
+        });
+      }
     }
     return max;
   }

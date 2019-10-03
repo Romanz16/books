@@ -21,50 +21,23 @@
           </div>
 
 
-          <div class="form-group"> 
+          <div class="form-group">
             <div class="price">
               <h2> Вартість:</h2>
               <div>({{price[0]}}₴-{{price[1]}}₴)</div>
-              <npn-slider id="price" [min]="minPrice()" [max]="maxPrice()" (onChange)="onSliderChangePrice($event)" [step]="10"
-                [showStepIndicator]="true"></npn-slider>
+              <npn-slider id="price" [minSelected]="minPrice()" [min]="minPrice()" [maxSelected]="maxPrice()"
+                [max]="maxPrice()" (onChange)="onSliderChangePrice($event)" [step]="10" [showStepIndicator]="true">
+              </npn-slider>
             </div>
           </div>
-
-          <!-- <div class="form-group">
-                    <label for="formControlRange">Ціна {{price}}</label>
-                    <input type="range" [(ngModel)]="price" name="price" class="form-control-range" min="0" max="100" step="10" id="formControlRange"
-                        list="tickmarks">
-                    <datalist id="tickmarks">
-                        <option value="0" label="0"></option>
-                        <option value="10"></option>
-                        <option value="20"></option>
-                        <option value="30"></option>
-                        <option value="40"></option>
-                        <option value="50" label="50"></option>
-                        <option value="60"></option>
-                        <option value="70"></option>
-                        <option value="80"></option>
-                        <option value="90"></option>
-                        <option value="100" label="100"></option>
-                    </datalist>
-                </div> -->
-
-          <!-- <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Default checkbox
-                    </label>
-                </div> -->
-
 
           <div class="form-group ">
             <div class="author">
               <h2>Автор</h2>
               <div>
                 <select [(ngModel)]="author" id="author" name="author" class="form-control">
-                    <option selected value="all">Всі</option>
+                  <option selected value="all">Всі</option>
                   <option *ngFor="let item of allAuthor" [value]="item.name">{{item.name}}</option>
-                 
                 </select>
               </div>
             </div>
@@ -74,8 +47,9 @@
             <div class="price">
               <h2> Рік:</h2>
               <div>({{year[0]}}-{{year[1]}})</div>
-              <npn-slider id="year" [min]="minYear()" [max]="maxYear()" (onChange)="onSliderChangeYear($event)" [step]="1"
-                [showStepIndicator]="true"></npn-slider>
+              <npn-slider id="year" [minSelected]="minYear()" [min]="minYear()" [maxSelected]="maxYear()"
+                [max]="maxYear()" (onChange)="onSliderChangeYear($event)" [step]="1" [showStepIndicator]="true">
+              </npn-slider>
             </div>
           </div>
 
@@ -83,8 +57,8 @@
             <div class="binding">
               <h2>Обкладинка</h2>
               <div>
-                <select  [(ngModel)]="binding"  id="binding" name="binding" class="form-control">
-                    <option selected value="all">Всі</option>
+                <select [(ngModel)]="binding" id="binding" name="binding" class="form-control">
+                  <option selected value="all">Всі</option>
                   <option *ngFor="let item of allBinding" [value]="item.title">{{item.title}}</option>
                 </select>
               </div>
@@ -95,10 +69,9 @@
             <div class="publishing">
               <h2>Видавництво</h2>
               <div>
-                <select  [(ngModel)]="publishing" id="publishing" name="publishing" class="form-control">
+                <select [(ngModel)]="publishing" id="publishing" name="publishing" class="form-control">
                   <option selected value="all">Всі</option>
                   <option *ngFor="let item of allPublishing" [value]="item.name">{{item.name}}</option>
-            
                 </select>
               </div>
             </div>
@@ -107,13 +80,13 @@
       </div>
     </form>
   </div>
-  <!-- </div> -->
 
   <div class="books">
     <div class="booksWrapper">
-      <div class="item" *ngFor="let prod of products | filterCategory:category:subcat | filterPrice:price[0]:price[1] | filterAuthor:author | filterYear:year[0]:year[1] | filterBinding:binding | filterPublishing:publishing" routerLinkActive="active"
-        [routerLink]="[ '/category',prod.catAlias,prod.subCatAlias,prod.alias,'infoBook' ]">
-        <div class="offers">-30%</div>
+      <div class="item"
+        *ngFor="let prod of products | filterCategory:category:subcat | filterPrice:price[0]:price[1] | filterAuthor:author | filterYear:year[0]:year[1] | filterBinding:binding | filterPublishing:publishing | paginate: { itemsPerPage: 20, currentPage: p }"
+        routerLinkActive="active" [routerLink]="[ '/category',prod.catAlias,prod.subCatAlias,prod.alias,'infoBook' ]">
+        <div *ngIf="prod.discount[0]" class="offers">{{prod.discount[0]}}</div>
         <img [src]=prod.img [alt]=prod.title [title]=prod.title>
         <div class="title">
           {{prod.title}}
@@ -124,12 +97,14 @@
       </div>
 
     </div>
-    <div class="pagination">
+    <pagination-controls class="my-pagination"  autoHide="true" (pageChange)="p = $event" previousLabel="Назад" nextLabel="Вперед">
+    </pagination-controls>
+    <!-- <div class="pagination">
       <div>1</div>
       <div>2</div>
       <div class="active">3</div>
       <div>4</div>
       <div>5</div>
-    </div>
+    </div> -->
   </div>
 </div>

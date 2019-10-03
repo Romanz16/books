@@ -47,6 +47,11 @@ import { FilterAuthorPipe } from './shared/pipes/filter-author.pipe';
 import { FilterYearPipe } from './shared/pipes/filter-year.pipe';
 import { FilterBindingPipe } from './shared/pipes/filter-binding.pipe';
 import { FilterPublishingPipe } from './shared/pipes/filter-publishing.pipe';
+import { FilterTopNewPipe } from './shared/pipes/filter-top-new.pipe';
+import { FilterDiscountsPipe } from './shared/pipes/filter-discounts.pipe';
+import { AdminDiscountsComponent } from './admin/admin-discounts/admin-discounts.component';
+
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -73,7 +78,10 @@ import { FilterPublishingPipe } from './shared/pipes/filter-publishing.pipe';
     FilterAuthorPipe,
     FilterYearPipe,
     FilterBindingPipe,
-    FilterPublishingPipe
+    FilterPublishingPipe,
+    FilterTopNewPipe,
+    FilterDiscountsPipe,
+    AdminDiscountsComponent
   ],
   imports: [
     BrowserModule,
@@ -90,6 +98,7 @@ import { FilterPublishingPipe } from './shared/pipes/filter-publishing.pipe';
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, BrowserAnimationsModule, // imports firebase/storage only needed for storage features
     MatSliderModule,
+    NgxPaginationModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],

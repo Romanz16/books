@@ -95,7 +95,7 @@ $color-green: #79b260;
         align-content: center;
 
         .detailPrice {
-          width: 270px;
+          width: 300px;
           color: #015699;
           font-family: $font-SegoeUI;
           font-size: 36px;
@@ -111,6 +111,12 @@ $color-green: #79b260;
             font-size: 17px;
             font-weight: 400;
             line-height: 17px;
+            s{
+              color: blue;
+              font-size: 20px;
+              margin-left: 5px;
+              padding: 0 4px;
+            }
           }
         }
 

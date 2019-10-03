@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/shared/interfaces/product.interface';
 import { ProductsService } from 'src/app/shared/services/products.service';
-import { Product } from 'src/app/shared/classes/product.model';
+// import { Product } from 'src/app/shared/classes/product.model';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { ICategory } from 'src/app/shared/interfaces/category.interface';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
-import { ObservableInput, Observable } from 'rxjs';
+import {  Observable } from 'rxjs';
 import { map, finalize } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
@@ -181,9 +181,9 @@ export class AdminProductComponent implements OnInit {
   }
   public addNewPublishingHouse() {
     let check = true;
-    const newPub = { name: this.newPublishingHouse }
+    const newPub = { name: this.newPublishingHouse };
     this.publishingHouse.filter(elem => {
-      
+
       if (elem['name'] === this.newPublishingHouse) {
         alert('Видавництво з таким іменем вже існує!');
         check = false;
@@ -192,7 +192,7 @@ export class AdminProductComponent implements OnInit {
     if (check) {
       this.newPublishingHouse = '';
       this.firestore.collection('publishingHouse').add(newPub);
-    };
+    }
   }
 
   public addNewAuthor() {
@@ -207,7 +207,7 @@ export class AdminProductComponent implements OnInit {
     if (check) {
       this.newAuthor = '';
       this.firestore.collection('author').add(newPub);
-    };
+    }
   }
 
   public onSubmit(form: NgForm) {
@@ -239,7 +239,7 @@ export class AdminProductComponent implements OnInit {
       const name: string = data.author[i].name;
       tmpAuthor[i] = name;
     }
-    let mydate = new Date();
+    const mydate = new Date();
     data.alias = this.alias(data.title.toLowerCase());
     this.obj = {
       title: data.title,
@@ -341,7 +341,7 @@ export class AdminProductComponent implements OnInit {
       }
     }
     console.log('strtmp', tmpAuthor);
-    let mydate = new Date();
+    const mydate = new Date();
     data.alias = this.alias(data.title.toLowerCase());
     this.obj = {
       title: data.title,
@@ -363,8 +363,6 @@ export class AdminProductComponent implements OnInit {
       date: mydate,
       alias: data.alias,
     };
-    // console.log(this.obj);
-    // console.log(data.author);
 
     this.firestore.doc('products/' + form.value.id).update(this.obj);
     this.resetForm();
@@ -383,7 +381,7 @@ export class AdminProductComponent implements OnInit {
     if (sortColumn !== 2) {
       this.sort1[num] = 2;
       // tslint:disable-next-line: only-arrow-functions
-      this.adminProducts.sort(function (a, b) {
+      this.adminProducts.sort(function(a, b) {
         const nameA = a[name];
         const nameB = b[name];
         if (nameA < nameB) {
@@ -397,7 +395,7 @@ export class AdminProductComponent implements OnInit {
     } else {
       this.sort1[num] = 1;
       // tslint:disable-next-line: only-arrow-functions
-      this.adminProducts.sort(function (a, b) {
+      this.adminProducts.sort(function(a, b) {
         const nameA = a[name];
         const nameB = b[name];
         if (nameA > nameB) {
@@ -412,13 +410,14 @@ export class AdminProductComponent implements OnInit {
   }
 
   public alias(text: string): string {
-    const arrru = new Array('.', ',', '’', "'", '-', ' ', 'Є', 'є', 'Ч', 'ч', 'Ш', 'ш', 'Щ', 'щ', 'Ї', 'ї', 'Ґ', 'ґ', 'І', 'і', 'Я', 'я', 'Ю', 'ю', 'Ч', 'ч', 'Ш', 'ш', 'Щ', 'щ', 'Ж', 'ж', 'А', 'а', 'Б', 'б', 'В', 'в', 'Г', 'г', 'Д', 'д', 'Е', 'е', 'Ё', 'ё', 'З', 'з', 'И', 'и', 'Й', 'й', 'К', 'к', 'Л', 'л', 'М', 'м', 'Н', 'н', 'О', 'о', 'П', 'п', 'Р', 'р', 'С', 'с', 'Т', 'т', 'У', 'у', 'Ф', 'ф', 'Х', 'х', 'Ц', 'ц', 'Ы', 'ы', 'Ь', 'ь', 'Ъ', 'ъ', 'Э', 'э');
-    const arren = new Array('', '', '', '', '_', '_', 'Ye', 'ye', 'Ch', 'ch', 'Sch', 'sch', 'Sch', 'sch', 'Yi', 'yi', 'G', 'g', 'I', 'i', 'Ya', 'ya', 'Yu', 'yu', 'Ch', 'ch', 'Sh', 'sh', 'Sh', 'sh', 'Zh', 'zh', 'A', 'a', 'B', 'b', 'V', 'v', 'G', 'g', 'D', 'd', 'E', 'e', 'E', 'e', 'Z', 'z', 'I', 'i', 'J', 'j', 'K', 'k', 'L', 'l', 'M', 'm', 'N', 'n', 'O', 'o', 'P', 'p', 'R', 'r', 'S', 's', 'T', 't', 'U', 'u', 'F', 'f', 'H', 'h', 'C', 'c', 'Y', 'y', '', '', '', '', 'E', 'e');
+    const arrru = new Array(',', '’', '\'', '-', ' ', 'Є', 'є', 'Ч', 'ч', 'Ш', 'ш', 'Щ', 'щ', 'Ї', 'ї', 'Ґ', 'ґ', 'І', 'і', 'Я', 'я', 'Ю', 'ю', 'Ч', 'ч', 'Ш', 'ш', 'Щ', 'щ', 'Ж', 'ж', 'А', 'а', 'Б', 'б', 'В', 'в', 'Г', 'г', 'Д', 'д', 'Е', 'е', 'Ё', 'ё', 'З', 'з', 'И', 'и', 'Й', 'й', 'К', 'к', 'Л', 'л', 'М', 'м', 'Н', 'н', 'О', 'о', 'П', 'п', 'Р', 'р', 'С', 'с', 'Т', 'т', 'У', 'у', 'Ф', 'ф', 'Х', 'х', 'Ц', 'ц', 'Ы', 'ы', 'Ь', 'ь', 'Ъ', 'ъ', 'Э', 'э');
+    const arren = new Array( '', '', '', '_', '_', 'Ye', 'ye', 'Ch', 'ch', 'Sch', 'sch', 'Sch', 'sch', 'Yi', 'yi', 'G', 'g', 'I', 'i', 'Ya', 'ya', 'Yu', 'yu', 'Ch', 'ch', 'Sh', 'sh', 'Sh', 'sh', 'Zh', 'zh', 'A', 'a', 'B', 'b', 'V', 'v', 'G', 'g', 'D', 'd', 'E', 'e', 'E', 'e', 'Z', 'z', 'I', 'i', 'J', 'j', 'K', 'k', 'L', 'l', 'M', 'm', 'N', 'n', 'O', 'o', 'P', 'p', 'R', 'r', 'S', 's', 'T', 't', 'U', 'u', 'F', 'f', 'H', 'h', 'C', 'c', 'Y', 'y', '', '', '', '', 'E', 'e');
 
     for (let i = 0; i < arrru.length; i++) {
       const reg = new RegExp(arrru[i], 'g');
       text = text.replace(reg, arren[i]);
     }
+
     return text;
   }
   public upload(event): void {

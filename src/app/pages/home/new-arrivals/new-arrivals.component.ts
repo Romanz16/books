@@ -50,22 +50,5 @@ export class NewArrivalsComponent implements OnInit {
       }
     );
   }
-  // public getCatAlias(id: string): string {
-  //   let catAlias: ICategory;
-  //   this.categoryService.getOneCategory(id).subscribe(
-  //     myArray => {
-  //      catAlias = { id: myArray.payload.id, ...myArray.payload.data() } as ICategory;
-  //     }
-  //   );
-  //   console.log(catAlias.alias);
-  //   return id;
-  // }
-  // public getSubCatAlias(id: string): string {
-  //   let catAlias: string;
-  //   this.subCat.filter(elem => {
-  //     if (elem.title === id)
-  //       catAlias = elem.alias;
-  //   })
-  //   return catAlias;
-  // }
+
 }

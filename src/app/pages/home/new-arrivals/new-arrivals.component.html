@@ -1,113 +1,13 @@
 <div class="content">
  
-  <div class="item" *ngFor="let prod of products" routerLinkActive="active" [routerLink]="[ '/category',prod.catAlias,prod.subCatAlias,prod.alias,'infoBook' ]">
-    <div class="offers">-30%</div>
+  <div class="item" *ngFor="let prod of products | filterTopNew:'20'" routerLinkActive="active" [routerLink]="[ '/category',prod.catAlias,prod.subCatAlias,prod.alias,'infoBook' ]">
+    <div *ngIf="prod.discount[0]" class="offers">{{prod.discount[0]}}</div>
     <img [src]=prod.img [alt]=prod.title [title]=prod.title>
     <div class="title"> 
-      {{prod.title}}
+      {{prod.title}} 
     </div>
     <div class="price">
       {{prod.price}} грн
     </div>
   </div>  
-  <!-- <div class="item"  routerLinkActive="active" [routerLink]="[ '/product', 'the_war_of_art','infoBook' ]">
-    <img src="../../../../assets/images/Layer_59.png" alt="">
-    <div class="title">
-      The war of Art
-    </div>
-    <div class="price">
-      $25
-    </div>
-  </div>
-  <div class="item">
-      <img src="../../../../assets/images/Layer_107.png" alt="">
-      <div class="title">
-        The Hare With Amber Eyes
-      </div>
-      <div class="price">
-        $120
-      </div>
-    </div>
-  <div class="item">
-    <img src="../../../../assets/images/Layer_59.png" alt="">
-    <div class="title">
-      The war of Art
-    </div>
-    <div class="price">
-      $25
-    </div>
-  </div>
-  <div class="item">
-    <img src="../../../../assets/images/Layer_58.png" alt="">
-    <div class="title">
-      The Hare With Amber Eyes The Hare With Amber Eyes
-    </div>
-    <div class="price">
-      $80
-    </div>
-  </div>
-  <div class="item">
-    <img src="../../../../assets/images/Layer_106.png" alt="">
-    <div class="title">
-      The Immortals of Meluha
-    </div>
-    <div class="price">
-      $60
-    </div>
-  </div>
-  <div class="item">
-    <img src="../../../../assets/images/Layer_106.png" alt="">
-    <div class="title">
-      The Hare With Amber Eyes
-    </div>
-    <div class="price">
-      $125
-    </div>
-  </div>
-
-  <div class="item">
-    <img src="../../../../assets/images/Layer_56.png" alt="">
-    <div class="title">
-      The Hare With Amber Eyes
-    </div>
-    <div class="price">
-      $80
-    </div>
-  </div>
-  <div class="item">
-    <img src="../../../../assets/images/Layer_59.png" alt="">
-    <div class="title">
-      The war of Art
-    </div>
-    <div class="price">
-      $25
-    </div>
-  </div>
-  <div class="item">
-    <img src="../../../../assets/images/Layer_58.png" alt="">
-    <div class="title">
-      The Hare With Amber Eyes The Hare With Amber Eyes
-    </div>
-    <div class="price">
-      $80
-    </div>
-  </div>
-  <div class="item">
-    <img src="../../../../assets/images/Layer_106.png" alt="">
-    <div class="title">
-      The Immortals of Meluha
-    </div>
-    <div class="price">
-      $60
-    </div>
-  </div>
-  <div class="item">
-    <img src="../../../../assets/images/Layer_106.png" alt="">
-    <div class="title">
-      The Immortals of Meluha
-    </div>
-    <div class="price">
-      $60
-    </div>
-  </div> -->
 </div>

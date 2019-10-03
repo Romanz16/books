@@ -6,16 +6,13 @@ $font-HelveticaRegular: 'HelveticaRegular';
   justify-content: space-around;
   flex-wrap: wrap;
   align-content: center;
-
   .item:hover {
     cursor: pointer;
-
     img {
       padding: 0px;
       transition: 0.3s;
     }
   }
-
   .item {
     margin: 15px;
     width: 119px;
@@ -41,7 +38,7 @@ $font-HelveticaRegular: 'HelveticaRegular';
       line-height: 26px;
       background-image: url(../../../../assets/images/offers.png);
     }
-
+ 
     img {
       padding: 5px;
       width: 119px;
@@ -50,7 +47,7 @@ $font-HelveticaRegular: 'HelveticaRegular';
 
     .title {
       width: 119px;
-      height: 30px;
+      height: 32px;
       overflow: hidden;
     }
 

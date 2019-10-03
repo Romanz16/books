@@ -16,12 +16,12 @@
       </div>
       <div class="text">
         {{product.description}}
-      </div>
+      </div> 
       <div class="price">
 
         <div class="productPrice">
           <div class="detailPrice">Наша ціна : <span> {{product.price}}₴</span>
-            <div>Знижка 30%</div>
+            <div>{{product.discount[1]}}  <s>{{product.discount[2]}}₴</s></div>
           </div>
           <div class="addBtn"><button class="btn btn-dark">Додати в корзину</button></div>
         </div>

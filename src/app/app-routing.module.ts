@@ -13,6 +13,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
 import { AdminSubCategoryComponent } from './admin/admin-sub-category/admin-sub-category.component';
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
+import { AdminDiscountsComponent } from './admin/admin-discounts/admin-discounts.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home/newArrivals', pathMatch: 'full' },
@@ -40,7 +41,7 @@ const routes: Routes = [
       { path: 'category', component: AdminCategoryComponent },
       { path: 'subcategory', component: AdminSubCategoryComponent },
       { path: 'product', component: AdminProductComponent },
-
+      { path: 'discount', component: AdminDiscountsComponent },
     ]
   },
   { path: '**', redirectTo: '/home/newArrivals' },
