@@ -26,5 +26,5 @@ export class ProductsService {
   }
   public getAuthor() {
     return this.firestore.collection('author').snapshotChanges();
-  }
+  } 
 }

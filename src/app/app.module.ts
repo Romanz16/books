@@ -55,6 +55,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { SearchComponent } from './pages/search/search.component';
 import { SearchPipe } from './shared/pipes/search.pipe';
 import { LoginComponent } from './pages/login/login.component';
+import { StorageModule } from '@ngx-pwa/local-storage';
 
 
 @NgModule({
@@ -105,7 +106,8 @@ import { LoginComponent } from './pages/login/login.component';
     AngularFireStorageModule, BrowserAnimationsModule, // imports firebase/storage only needed for storage features
     MatSliderModule,
     NgxPaginationModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    StorageModule.forRoot({ IDBNoWrap: true })
   ],
   providers: [],
   bootstrap: [AppComponent]
