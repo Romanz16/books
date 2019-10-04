@@ -14,6 +14,8 @@ import { AdminCategoryComponent } from './admin/admin-category/admin-category.co
 import { AdminSubCategoryComponent } from './admin/admin-sub-category/admin-sub-category.component';
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminDiscountsComponent } from './admin/admin-discounts/admin-discounts.component';
+import { SearchComponent } from './pages/search/search.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home/newArrivals', pathMatch: 'full' },
@@ -44,6 +46,8 @@ const routes: Routes = [
       { path: 'discount', component: AdminDiscountsComponent },
     ]
   },
+  { path: 'search/:searchText', component: SearchComponent },
+  { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '/home/newArrivals' },
 ];
 

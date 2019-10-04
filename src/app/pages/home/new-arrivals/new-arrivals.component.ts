@@ -15,7 +15,7 @@ export class NewArrivalsComponent implements OnInit {
   products: Array<IProduct>;
   category: Array<ICategory>;
   subCat: Array<ISubCategory>;
-  // tslint:disable-next-line: max-line-length
+  // tslint:disable-next-line: max-line-length 
   constructor(private subcategoryService: SubCategoryService, private productService: ProductsService, private categoryService: CategoryService) { }
 
   ngOnInit() {

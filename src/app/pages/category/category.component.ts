@@ -16,11 +16,11 @@ import { ProductsService } from 'src/app/shared/services/products.service';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
-  products: Array<IProduct>;
+  products: Array<IProduct> = [];
   category: string;
   subcat = '';
   price: Array<any> = [];
-  year: Array<any>;
+  year: Array<any> = [];
   author: string;
   allAuthor: Array<string>;
   binding: string;
@@ -28,8 +28,8 @@ export class CategoryComponent implements OnInit {
   publishing: string;
   allPublishing: Array<string>;
 
-  adminSubCategories: Array<ISubCategory>;
-  adminCategories: Array<ICategory>;
+  adminSubCategories: Array<ISubCategory> = [];
+  adminCategories: Array<ICategory> = [];
 
   min: number;
   max: number;
@@ -233,6 +233,8 @@ export class CategoryComponent implements OnInit {
     }
     return min;
   }
+
+
   public maxYear(): number {
     let max = +this.products[0].year;
     if (this.subcat) {

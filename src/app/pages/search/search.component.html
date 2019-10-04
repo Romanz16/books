@@ -1,0 +1,16 @@
+<h2>Пошук ({{searchText}})</h2>
+<div class="content">
+
+    <div class="item" *ngFor="let prod of products | search:searchText" routerLinkActive="active" [routerLink]="[ '/category',prod.catAlias,prod.subCatAlias,prod.alias,'infoBook' ]">
+        <div *ngIf="prod.discount[0]" class="offers">{{prod.discount[0]}}</div>
+        <img [src]=prod.img [alt]=prod.title [title]=prod.title>
+        <div class="title"> 
+          {{prod.title}} 
+        </div>
+        <div class="price">
+          {{prod.price}} грн
+        </div>
+      </div>  
+  
+  </div>
+  

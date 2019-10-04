@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   ulMenu: string;
   ulMenuHeight: string;
   checkMenu: boolean = true;
-
+  searchText: string;
   adminCategories: Array<ICategory>;
   constructor(private route: ActivatedRoute,
     private location: Location, private categoryService: CategoryService, private firestore: AngularFirestore) {
@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
     if (event.target.innerWidth > 400) {
       this.ulMenuHeight = '41px';
       this.ulMenu = 'flex';
-    } else{
+    } else {
       this.ulMenu = 'none';
     }
   }

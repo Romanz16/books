@@ -52,7 +52,7 @@ export class AdminDiscountsComponent implements OnInit {
 
   sort1: Array<number> = [3, 3, 3, 3, 3, 3, 3];
   obj: Object;
-
+  p: number = 1;
   constructor(private subcategoryService: SubCategoryService, private productService: ProductsService, private categoryService: CategoryService, private prStorage: AngularFireStorage, private firestore: AngularFirestore) {
 
   }
@@ -70,9 +70,12 @@ export class AdminDiscountsComponent implements OnInit {
     );
   }
 
-  public deleteProduct(obj: IProduct): void {
-    this.firestore.doc('products/' + obj.id).delete();
-    this.prStorage.storage.refFromURL(obj.img).delete();
+  public deleteProductDiscounts(obj: IProduct): void {
+    if(obj.discount[0]){
+    obj.price = obj.discount[2];
+    obj.discount = ['', '', ''];
+    this.firestore.doc('products/' + obj.id).update(obj);
+    }
   }
 
   public editProduct(obj: IProduct): void {
@@ -83,14 +86,16 @@ export class AdminDiscountsComponent implements OnInit {
   public saveEditProduct(form: NgForm): void {
     const data = Object.assign({}, form.value);
     delete data.id;
-    this.formData.price = this.newprice;
-    if (this.formData.discount[2] !== '') {
+  
+    if (this.formData.discount[2]) {
       this.formData.discount = [data.title, data.description, this.formData.discount[2]];
-    } else
-      this.formData.discount = [data.title, data.description, data.price];
-
+    } else {
+      this.formData.discount = [data.title, data.description, this.formData.price];
+    }
+    this.formData.price = this.newprice;
     this.firestore.doc('products/' + form.value.id).update(this.formData);
     // this.resetForm();
+     form.reset();
     this.editStatus = false;
   }
 

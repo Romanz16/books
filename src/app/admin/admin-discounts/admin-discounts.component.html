@@ -7,19 +7,19 @@
     <input type="hidden" name="price" #price="ngModel" [(ngModel)]="formData.price">
     <label for="short">Коротка назва(-30%)</label>
     <input [(ngModel)]="formData.discount[0]" id="short" name="title" type="text" #qq="ngModel" class="form-control"
-      placeholder="Назва..." required>
+      placeholder="коротка мітка..." required>
     <div *ngIf="qq.invalid && qq.touched">Заповніть поле</div>
   </div>
   <div class="form-group">
     <label for="description">Повна назва(Знижка -30%)</label>
     <input [(ngModel)]="formData.discount[1]" id="description" name="description" type="text" #dd="ngModel"
-      class="form-control" placeholder="Назва..." required>
+      class="form-control" placeholder="повна шазва..." required>
     <div *ngIf="dd.invalid && dd.touched">Заповніть поле</div>
   </div>
   <div class="form-group">
   <label for="price">Нова акційна ціна</label>
   <input [(ngModel)]="newprice" id="newprice" name="newprice" type="text" #np="ngModel" class="form-control"
-    placeholder="Назва..." required>
+    placeholder="Акційна ціна..." required>
   <div *ngIf="np.invalid && np.touched">Заповніть поле</div>
   </div>
 
@@ -50,7 +50,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let prod of adminProducts; let i=index">
+    <tr *ngFor="let prod of adminProducts | paginate: { itemsPerPage: 20, currentPage: p }; let i=index">
       <!-- <td>{{i+1}}</td> -->
       <td>{{prod.title}}</td>
       <td>{{prod.subCatTitle}}</td>
@@ -64,10 +64,11 @@
         <button class="btn btn-dark" (click)="editProduct(prod)">Edit</button>
       </td>
       <td>
-        <button [disabled]="editStatus" class="btn btn-dark" (click)="deleteProduct(prod)">Delete</button>
+        <button [disabled]="editStatus" class="btn btn-dark" (click)="deleteProductDiscounts(prod)">Delete</button>
       </td>
     </tr>
   </tbody>
+  
 </table>
-
-<!-- <button (click)="getDisData()">getData</button> -->
+<pagination-controls class="my-pagination"  autoHide="true" (pageChange)="p = $event" previousLabel="Назад" nextLabel="Вперед">
+</pagination-controls>

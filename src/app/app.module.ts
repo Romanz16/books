@@ -52,6 +52,9 @@ import { FilterDiscountsPipe } from './shared/pipes/filter-discounts.pipe';
 import { AdminDiscountsComponent } from './admin/admin-discounts/admin-discounts.component';
 
 import {NgxPaginationModule} from 'ngx-pagination';
+import { SearchComponent } from './pages/search/search.component';
+import { SearchPipe } from './shared/pipes/search.pipe';
+import { LoginComponent } from './pages/login/login.component';
 
 
 @NgModule({
@@ -81,7 +84,10 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FilterPublishingPipe,
     FilterTopNewPipe,
     FilterDiscountsPipe,
-    AdminDiscountsComponent
+    AdminDiscountsComponent,
+    SearchComponent,
+    SearchPipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

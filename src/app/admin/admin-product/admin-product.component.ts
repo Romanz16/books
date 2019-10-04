@@ -73,10 +73,11 @@ export class AdminProductComponent implements OnInit {
     catAlias: ''
   };
   // dropdownList = [];
-  selectedItems = [];
+  // selectedItems = [];
   dropdownSettings: IDropdownSettings = {};
   sort1: Array<number> = [3, 3, 3, 3, 3, 3, 3];
   obj: Object;
+  p: number = 1;
   // tslint:disable-next-line: max-line-length
   constructor(private subcategoryService: SubCategoryService, private productService: ProductsService, private categoryService: CategoryService, private prStorage: AngularFireStorage, private firestore: AngularFirestore) {
     // this.getProdData();
@@ -269,6 +270,7 @@ export class AdminProductComponent implements OnInit {
     if (form != null) {
       form.reset();
     } else {
+      // this. selectedItems = [];
       this.urlImage = '';
       this.productImage = '';
       this.formData = {
@@ -284,9 +286,9 @@ export class AdminProductComponent implements OnInit {
         img: '',
         publishingHouse: '',
         binding: '',
-        comments: [''],
-        author: [''],
-        discount: [''],
+        comments: [],
+        author: [],
+        discount: [],
         date: '',
         alias: '',
         subCatAlias: '',
@@ -304,7 +306,7 @@ export class AdminProductComponent implements OnInit {
     this.formData = obj;
     this.productImage = obj.img;
     this.editStatus = true;
-    // this.selectedItems = [{name:'sdfds'}];
+    // this.selectedItems =Object.assign({}, obj.author);
   }
 
   public saveEditProduct(form: NgForm): void {

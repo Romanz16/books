@@ -1,5 +1,5 @@
 <h1>{{pageTitle}}</h1>
-<form #form="ngForm" (submit)="onSubmit(form)">  
+<form #form="ngForm" (submit)="onSubmit(form)">
   <div class="form-group">
     <input type="hidden" name="id" #id="ngModel" [(ngModel)]="formData.id">
     <input [(ngModel)]="formData.title" name="title" type="text" #qq="ngModel" class="form-control"
@@ -163,7 +163,6 @@
       <th scope="col" (click)="sort('year',2)">Рік<i class="fa fa-fw fa-sort"></i> </th>
       <th scope="col" (click)="sort('publishingHouse',6)">Видавництво<i class="fa fa-fw fa-sort"></i></th>
       <th scope="col">Дата<i class="fa fa-fw fa-sort"></i></th>
-     
       <th scope="col">image</th>
       <th scope="col">Edit</th>
       <th scope="col">Delete</th>
@@ -171,7 +170,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let prod of adminProducts; let i=index">
+    <tr *ngFor="let prod of adminProducts | paginate: { itemsPerPage: 20, currentPage: p }; let i=index">
       <!-- <td>{{i+1}}</td> -->
       <td>{{prod.title}}</td>
       <td>{{prod.subCatTitle}}</td>
@@ -186,9 +185,10 @@
       </td>
       <td>
         <button [disabled]="editStatus" class="btn btn-dark" (click)="deleteProduct(prod)">Delete</button>
-      </td> 
+      </td>
     </tr>
-  </tbody> 
+  </tbody>
 </table>
-
-<!-- <button (click)="getDisData()">getData</button> -->
+<pagination-controls class="my-pagination" autoHide="true" (pageChange)="p = $event" previousLabel="Назад"
+  nextLabel="Вперед">
+</pagination-controls>

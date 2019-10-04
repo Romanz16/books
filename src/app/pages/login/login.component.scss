@@ -1,0 +1,21 @@
+$font-SegoeWPSemiLight: 'SegoeWPSemiLight';
+$font-HelveticaRegular: 'HelveticaRegular';
+
+
+.content {
+    min-height: calc(100vh - 474px);
+    margin-bottom: 25px;
+    margin-top: 15px;
+    border: 1px solid #d8dce0;
+    border-radius: 5px;
+    padding: 5px;
+    h2{
+        text-align: center;
+        font-size: 35px;
+        line-height: 45px;
+        color: #0e0e0e;
+        font-family: cursive;
+        font-weight: 500;
+        margin: 10px;
+      }
+}
