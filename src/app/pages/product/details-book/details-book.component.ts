@@ -10,7 +10,27 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class DetailsBookComponent implements OnInit {
   products: Array<IProduct>;
-  product: IProduct;
+  product: IProduct = {
+    id: '',
+    title: '',
+    description: '',
+    catId: '',
+    catTitle: '',
+    subCatId: '',
+    subCatTitle: '',
+    price: '',
+    year: '',
+    img: '',
+    publishingHouse: '',
+    binding: '',
+    comments: [],
+    author: [],
+    discount: [],
+    date: '',
+    alias: '',
+    subCatAlias: '',
+    catAlias: ''
+  };
   prod: string;
   constructor(private route: ActivatedRoute,
     private productService: ProductsService) { }

@@ -51,11 +51,13 @@ import { FilterTopNewPipe } from './shared/pipes/filter-top-new.pipe';
 import { FilterDiscountsPipe } from './shared/pipes/filter-discounts.pipe';
 import { AdminDiscountsComponent } from './admin/admin-discounts/admin-discounts.component';
 
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchComponent } from './pages/search/search.component';
 import { SearchPipe } from './shared/pipes/search.pipe';
 import { LoginComponent } from './pages/login/login.component';
 import { StorageModule } from '@ngx-pwa/local-storage';
+
+import { AuthService } from "./shared/services/auth.service";
 
 
 @NgModule({
@@ -107,9 +109,12 @@ import { StorageModule } from '@ngx-pwa/local-storage';
     MatSliderModule,
     NgxPaginationModule,
     NgMultiSelectDropDownModule.forRoot(),
-    StorageModule.forRoot({ IDBNoWrap: true })
+    StorageModule.forRoot({ IDBNoWrap: true }),
+
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterDiscountsPipe implements PipeTransform {
 
-  transform(array: Array<any>, count: number, ...args: any[]): Array<any> {
+  transform(array: Array<any>, count?: number, ...args: any[]): Array<any> {
     if (!array) { return array; }
     array.sort((a: any, b: any) => {
       const nameA = a['date'].seconds;
@@ -19,7 +19,9 @@ export class FilterDiscountsPipe implements PipeTransform {
       }
     });
     // console.log('arrtop=',array);
-    return array.filter(el => el.discount[0]).splice(0, count);
+    if(count){
+    return array.filter(el => el.discount[0]).splice(0, count);}
+    else return array.filter(el => el.discount[0]);
   }
 
 }

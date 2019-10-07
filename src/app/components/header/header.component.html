@@ -1,9 +1,9 @@
 <header>
   <div class="header-top">
-    <div class="mycontainer">
-     <span *ngIf="check">{{mylogin}}</span>
-      <a *ngIf="!check" [routerLink]="['/login']">Вхід</a>
-      <a *ngIf="check" (click)="exit()">Вихід</a>
+    <div class="mycontainer" >
+     <span  *ngIf="userLogin">{{userLogin}}</span>
+      <a *ngIf="!userLogin" [routerLink]="['/login']">Вхід</a>
+      <a  *ngIf="userLogin" (click)="authService.SignOut()">Вихід</a>
       <a  href="" >My Account</a>
       <a href="">Help</a> 
     </div>

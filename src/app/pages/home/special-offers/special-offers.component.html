@@ -1,14 +1,20 @@
 <div class="content">
- <div *ngFor="let prod of products | filterDiscounts:'20'">
-  <div  *ngIf="prod.discount[0]" class="item"  routerLinkActive="active" [routerLink]="[ '/category',prod.catAlias,prod.subCatAlias,prod.alias,'infoBook' ]">
-    <div  class="offers">{{prod.discount[0]}}</div>
-    <img [src]=prod.img [alt]=prod.title [title]=prod.title>
-    <div class="title"> 
-      {{prod.title}}
+  <div class="booksWrapper">
+    <div *ngFor="let prod of products | filterDiscounts| paginate: { itemsPerPage: 20, currentPage: p }">
+      <div *ngIf="prod.discount[0]" class="item" routerLinkActive="active"
+        [routerLink]="[ '/category',prod.catAlias,prod.subCatAlias,prod.alias,'infoBook' ]">
+        <div class="offers">{{prod.discount[0]}}</div>
+        <img [src]=prod.img [alt]=prod.title [title]=prod.title>
+        <div class="title">
+          {{prod.title}}
+        </div>
+        <div class="price">
+          {{prod.price}} грн
+        </div>
+      </div>
     </div>
-    <div class="price">
-      {{prod.price}} грн
-    </div>
-  </div> 
-</div> 
+  </div>
+  <pagination-controls class="my-pagination" autoHide="true" (pageChange)="p = $event" previousLabel="Назад"
+    nextLabel="Вперед">
+  </pagination-controls>
 </div>

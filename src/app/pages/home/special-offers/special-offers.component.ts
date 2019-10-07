@@ -15,6 +15,7 @@ export class SpecialOffersComponent implements OnInit {
   products: Array<IProduct>;
   category: Array<ICategory>;
   subCat: Array<ISubCategory>;
+  p: number = 1;
   // tslint:disable-next-line: max-line-length
   constructor(private subcategoryService: SubCategoryService, private productService: ProductsService, private categoryService: CategoryService) { }
 

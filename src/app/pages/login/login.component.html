@@ -1,5 +1,26 @@
 <div class="content">
-  <h2>Авторизація</h2><h2 *ngIf="check">Вітаємо {{login}}</h2>
+<!--auth=  https://www.positronx.io/save-user-data-in-local-storage-using-angular-7-firebase/
+https://www.positronx.io/full-angular-7-firebase-authentication-system/ -->
+    <div class="displayTable">
+    <div class="displayTableCell">
+  
+      <div class="authBlock">
+        <h3>Sign In</h3>
+  
+        <!-- Calling GoogleAuth Api from AuthService -->
+        <div class="formGroup">
+          <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+            <i class="fab fa-google-plus-g"></i>
+            Log in with Google
+          </button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+
+  <!-- <h2>Авторизація</h2>
+  <h2 *ngIf="check">Вітаємо {{login}}</h2>
 
   <div class="login">
     <form #form="ngForm">
@@ -15,7 +36,8 @@
       </div>
       <button [disabled]="form.invalid" type="button" (click)="loginUser()"
         class="btn btn-success btn-block">Авторизуватися</button>
-    </form>
-  </div>
+    </form> -->
+  <!-- </div> -->
+
 
 </div>

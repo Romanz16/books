@@ -6,7 +6,10 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ICategory } from 'src/app/shared/interfaces/category.interface';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { IUser } from 'src/app/shared/interfaces/user.interface';
-import { StorageMap } from '@ngx-pwa/local-storage';
+// import { StorageMap } from '@ngx-pwa/local-storage';
+
+import { AuthService } from "../../shared/services/auth.service";
+import { AngularFireAuth } from "@angular/fire/auth";
 
 @Component({
   selector: 'app-header',
@@ -23,14 +26,42 @@ export class HeaderComponent implements OnInit {
   adminCategories: Array<ICategory>;
   users: Array<IUser> = [];
   check = false;
-  mylogin: string = 'g';
+  mylogin: string = '';
+  myuser: Array<string>;
+  userLogin: string='';
 
-  constructor(private storage: StorageMap, private userService: UsersService, private categoryService: CategoryService, private firestore: AngularFirestore) {
+  constructor(public afAuth: AngularFireAuth,public authService: AuthService, private userService: UsersService, private categoryService: CategoryService, private firestore: AngularFirestore) {
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.userLogin =  JSON.parse(localStorage.getItem('user')).displayName // Setting up user data in userData var
+      }
+      if (user ===null){
+        this.userLogin='';
+      }
+      //   localStorage.setItem('user', JSON.stringify(this.userLogin));
+      //   JSON.parse(localStorage.getItem('user'));
+      // } else {
+      //   localStorage.setItem('user', null);
+      //   JSON.parse(localStorage.getItem('user'));
+      // }
+      console.log('auth=',this.userLogin);
+    })
   }
 
   ngOnInit() {
+    // this.authService.UserData().subscribe(
+    //   myArray => {
+    //     this.myuser = myArray.map(item => {
+    //       return {
+    //         id: item.payload.doc.id,
+    //         ...item.payload.doc.data()
+    //       } as any;
+    //     });
+    //   }
+    // );
     // let user = { firstName: 'Henri', lastName: 'Bergson' };
     // this.storage.set('user', user).subscribe(() => { });
+
 
     this.userService.getUser().subscribe(
       myArray => {
@@ -43,7 +74,7 @@ export class HeaderComponent implements OnInit {
       }
     );
     this.getCategories();
-    this.login();
+    // this.login();
   }
   public getCategories(): void {
     this.categoryService.getCategories().subscribe(
@@ -57,20 +88,15 @@ export class HeaderComponent implements OnInit {
       }
     );
   }
-  public login(): void {
-    if (localStorage.length > 0) {
-      const getJson = localStorage.getItem('users');
-      let user = JSON.parse(getJson);
-      this.check = true;
-      this.mylogin = user.login;
-      // this.storage.set('user', user).subscribe(() => {});
-      // user = { firstName: 'Henri', lastName: 'Bergson' };
-      // this.storage.set('user', user).subscribe(() => { });
-      // this.storage.get('user').subscribe((user) => {
-      //   console.log(user);
-      // });
-    }
-  }
+  // public login(): void {
+  //   if (localStorage.length > 0) {
+  //     const getJson = localStorage.getItem('users');
+  //     let user = JSON.parse(getJson);
+  //     this.check = true;
+  //     this.mylogin = user.login;
+    
+  //   }
+  // }
   public exit(): void {
     localStorage.removeItem('users');
     this.check = false;

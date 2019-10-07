@@ -39,11 +39,6 @@
 
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <!-- <a routerLinkActive="active" routerLink='infoBook' class="nav-item nav-link active" id="nav-home-tab"
-          data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Про книгу</a>
-        <a routerLinkActive="active" routerLink='detailsBook' class="nav-item nav-link" id="nav-profile-tab"
-          data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Інша
-          інформація</a> -->
         <a routerLinkActive="active" [routerLink]="[ '/category', product.catAlias, product.subCatAlias, product.alias, 'infoBook']" class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
           aria-controls="nav-home" aria-selected="true">Про книгу</a>
         <a routerLinkActive="active" [routerLink]="[ '/category', product.catAlias, product.subCatAlias, product.alias, 'detailsBook' ]" class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"

@@ -3,9 +3,10 @@ $font-HelveticaRegular: 'HelveticaRegular';
 
 .content {
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
-  align-content: center;
+  justify-content: space-around;
+  align-content: flex-start;
+
   .item:hover {
     cursor: pointer;
     img {
@@ -16,6 +17,7 @@ $font-HelveticaRegular: 'HelveticaRegular';
   .item {
     margin: 15px;
     width: 119px;
+    // width: 138px;
     text-align: center;
     color: #595959;
     font-family: $font-SegoeWPSemiLight;

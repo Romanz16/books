@@ -205,7 +205,10 @@ export class CategoryComponent implements OnInit {
   }
 
   public minYear(): number {
-    let min = +this.products[0].year;
+    let min: number;
+    let today = new Date();
+    let year = today.getFullYear();
+    min = year;
     if (this.subcat) {
       this.products.filter(el => {
         if (el.subCatAlias === this.subcat) {
@@ -236,7 +239,7 @@ export class CategoryComponent implements OnInit {
 
 
   public maxYear(): number {
-    let max = +this.products[0].year;
+    let max =2010;
     if (this.subcat) {
       this.products.filter(el => {
         if (el.subCatAlias === this.subcat) {
