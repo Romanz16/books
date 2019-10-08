@@ -1,0 +1,35 @@
+<div class="content">
+  <h2>Зареєструватися</h2>
+  <div class="login">
+    <div class="form-group">
+      <input type="email" class="form-control" placeholder="Email" #userEmail required>
+    </div>
+
+    <div class="form-group">
+      <input type="password" class="form-control" placeholder="Пароль" #userPwd required>
+    </div>
+
+    <div class="form-group">
+      <input type="button" class="btn btn-success btn-block" value="Зареєструватися"
+        (click)="authService.SignUp(userEmail.value, userPwd.value)">
+    </div>
+
+    <div class="form-group">
+      <div class="or">
+        або
+      </div>
+    </div>
+
+    <!-- Continue with Google -->
+    <div class="form-group">
+      <button type="button" class="btn btn-danger btn-block" (click)="authService.GoogleAuth()">
+        <i class="fab fa-google-plus-g"></i>
+        Зареєструватися через Google
+      </button>
+    </div>
+
+    <div class="form-group">
+      <span>Ви Вже маєте акаунт? <span class="redirect" routerLink="/login">Авторизуватися</span></span>
+    </div>
+  </div>
+</div>

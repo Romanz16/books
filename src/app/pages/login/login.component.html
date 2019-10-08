@@ -1,43 +1,48 @@
 <div class="content">
-<!--auth=  https://www.positronx.io/save-user-data-in-local-storage-using-angular-7-firebase/
+  <!--auth=  https://www.positronx.io/save-user-data-in-local-storage-using-angular-7-firebase/
 https://www.positronx.io/full-angular-7-firebase-authentication-system/ -->
-    <div class="displayTable">
-    <div class="displayTableCell">
-  
-      <div class="authBlock">
-        <h3>Sign In</h3>
-  
-        <!-- Calling GoogleAuth Api from AuthService -->
-        <div class="formGroup">
-          <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
-            <i class="fab fa-google-plus-g"></i>
-            Log in with Google
-          </button>
-        </div>
-      </div>
-  
-    </div>
-  </div>
-
-  <!-- <h2>Авторизація</h2>
-  <h2 *ngIf="check">Вітаємо {{login}}</h2>
-
   <div class="login">
-    <form #form="ngForm">
-      <div class="form-group">
-        <input [(ngModel)]="login" id="login" #log="ngModel" name="login" class="form-control" placeholder="Логін..."
-          required pattern="[a-zA-Z0-9]{3,30}">
-        <div *ngIf="log.invalid && log.touched">Заповніть поле(символи латиниці та цифри, довжина поля 3-30</div>
-      </div>
-      <div class="form-group">
-        <input [(ngModel)]="password" id="password" #pp="ngModel" name="password" class="form-control"
-          placeholder="Пароль..." required pattern="[a-zA-Z0-9]{3,30}">
-        <div *ngIf="pp.invalid && pp.touched">Заповніть поле(символи латиниці та цифри, довжина поля 3-30</div>
-      </div>
-      <button [disabled]="form.invalid" type="button" (click)="loginUser()"
-        class="btn btn-success btn-block">Авторизуватися</button>
-    </form> -->
-  <!-- </div> -->
 
 
+
+    <h2>Авторизація</h2>
+    <div class="form-group">
+
+      <input type="text" id="mylogin" class="form-control" #userName placeholder="Логін..." required>
+    </div>
+
+    <div class="form-group">
+      <input type="password" class="form-control" placeholder="Пароль..." #userPassword required>
+    </div>
+
+    <!-- Calling SignIn Api from AuthService -->
+    <div class="form-group">
+      <input type="button" class="btn btn-success btn-block" value="Увійти"
+        (click)="authService.SignIn(userName.value, userPassword.value)">
+    </div>
+
+    <div class="form-group">
+      <div class="or">
+        або
+      </div>
+    </div>
+
+    <!-- Calling GoogleAuth Api from AuthService -->
+    <div class="form-group">
+      <button type="button" class="btn btn-danger btn-block" (click)="authService.GoogleAuth()">
+        <i class="fab fa-google-plus-g"></i>
+        Увійти з допомогою Google
+      </button>
+    </div>
+
+    <div class="form-group">
+      <span class="redirect"  [routerLink]="['/login/forgot-password']">Нагадати пароль?</span>
+    </div>
+
+
+    <div class="form-group">
+      <span>Не маєте акаунта?<span class="redirect" [routerLink]="['/login/sign-up']"> Зареєструватись</span></span>
+    </div>
+
+  </div>
 </div>

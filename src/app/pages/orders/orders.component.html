@@ -1,0 +1,39 @@
+<div class="content">
+    <h2>Оформити Замовлення</h2>
+    <table class="table table-striped table-bordered table-sm">
+        <thead>
+          <tr>
+            <!-- <th scope="col" (click)="sort('id',0)"><i class="fa fa-fw fa-sort"><strong>#</strong></i> </th> -->
+            <th scope="col" (click)="sort('title',1)">Назва<i class="fa fa-fw fa-sort"></i></th>
+            <th scope="col" (click)="sort('subCatTitle',3)">ПідКатегорія<i class="fa fa-fw fa-sort"></i></th>
+            <th scope="col" (click)="sort('author',4)">Автор<i class="fa fa-fw fa-sort"></i></th>
+            <th scope="col" (click)="sort('price',5)">Ціна<i class="fa fa-fw fa-sort"></i></th>
+            <th scope="col" (click)="sort('year',2)">Рік<i class="fa fa-fw fa-sort"></i> </th>
+            <th scope="col" (click)="sort('publishingHouse',6)">Видавництво<i class="fa fa-fw fa-sort"></i></th>
+         
+            <th scope="col">image</th>
+        
+            <th scope="col">Delete</th>
+      
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prod of products | paginate: { itemsPerPage: 20, currentPage: p }; let i=index">
+            <!-- <td>{{i+1}}</td> -->
+            <td>{{prod.title}}</td>
+            <td>{{prod.subCatTitle}}</td>
+            <td>{{prod.author}}</td>
+            <td>{{prod.price}}</td>
+            <td>{{prod.year}}</td>
+            <td>{{prod.publishingHouse}}</td>
+          
+            <td><img [src]="prod.img" width="50px;" height="70px" alt=""></td>
+         
+            <td>
+              <button [disabled]="editStatus" class="btn btn-dark" (click)="deleteProduct(prod)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  

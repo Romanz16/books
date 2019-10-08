@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+// import { ActivatedRoute } from '@angular/router';
+// import { Location } from '@angular/common';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ICategory } from 'src/app/shared/interfaces/category.interface';
 import { UsersService } from 'src/app/shared/services/users.service';
-import { IUser } from 'src/app/shared/interfaces/user.interface';
 // import { StorageMap } from '@ngx-pwa/local-storage';
 
 import { AuthService } from "../../shared/services/auth.service";
 import { AngularFireAuth } from "@angular/fire/auth";
+import { IProduct } from 'src/app/shared/interfaces/product.interface';
+import { ProductsService } from 'src/app/shared/services/products.service';
 
 @Component({
   selector: 'app-header',
@@ -24,57 +25,49 @@ export class HeaderComponent implements OnInit {
   checkMenu: boolean = true;
   searchText: string;
   adminCategories: Array<ICategory>;
-  users: Array<IUser> = [];
-  check = false;
-  mylogin: string = '';
-  myuser: Array<string>;
-  userLogin: string='';
-
-  constructor(public afAuth: AngularFireAuth,public authService: AuthService, private userService: UsersService, private categoryService: CategoryService, private firestore: AngularFirestore) {
+  // users: Array<IUser> = [];
+  // check = false;
+  // mylogin: string = '';
+  // myuser: Array<string>;
+  count = 0;
+  totalPrice: number = 0;
+  userLogin: string = '';
+  products: Array<IProduct> = [];
+  constructor(public afAuth: AngularFireAuth, public authService: AuthService, private userService: UsersService, private categoryService: CategoryService, private firestore: AngularFirestore) {
     this.afAuth.authState.subscribe(user => {
       if (user) {
-        this.userLogin =  JSON.parse(localStorage.getItem('user')).displayName // Setting up user data in userData var
+        this.userLogin = JSON.parse(localStorage.getItem('user')).displayName // Setting up user data in userData var
+        if (this.userLogin === null) { this.userLogin = JSON.parse(localStorage.getItem('user')).email }
       }
-      if (user ===null){
-        this.userLogin='';
+      if (user === null) {
+        this.userLogin = '';
       }
-      //   localStorage.setItem('user', JSON.stringify(this.userLogin));
-      //   JSON.parse(localStorage.getItem('user'));
-      // } else {
-      //   localStorage.setItem('user', null);
-      //   JSON.parse(localStorage.getItem('user'));
-      // }
-      console.log('auth=',this.userLogin);
+
+    });
+    this.products = this.userService.getData();
+    if (this.products !==null) {
+      this.count = this.products.length;
+      for (let i = 0; i < this.products.length; i++) {
+        this.totalPrice += +(this.products[i].price);
+        this.totalPrice = Math.round(this.totalPrice);
+      }
+    }
+
+    this.userService.onproducts.subscribe(cnt => {
+      this.products = cnt;
+      if (this.products!=null) {
+        this.count = this.products.length;
+        this.totalPrice = 0;
+        for (let i = 0; i < this.products.length; i++) {
+          this.totalPrice += +(this.products[i].price);
+          this.totalPrice = Math.round(this.totalPrice);
+        }
+      }
     })
   }
 
   ngOnInit() {
-    // this.authService.UserData().subscribe(
-    //   myArray => {
-    //     this.myuser = myArray.map(item => {
-    //       return {
-    //         id: item.payload.doc.id,
-    //         ...item.payload.doc.data()
-    //       } as any;
-    //     });
-    //   }
-    // );
-    // let user = { firstName: 'Henri', lastName: 'Bergson' };
-    // this.storage.set('user', user).subscribe(() => { });
-
-
-    this.userService.getUser().subscribe(
-      myArray => {
-        this.users = myArray.map(item => {
-          return {
-            id: item.payload.doc.id,
-            ...item.payload.doc.data()
-          } as any;
-        });
-      }
-    );
     this.getCategories();
-    // this.login();
   }
   public getCategories(): void {
     this.categoryService.getCategories().subscribe(
@@ -88,19 +81,8 @@ export class HeaderComponent implements OnInit {
       }
     );
   }
-  // public login(): void {
-  //   if (localStorage.length > 0) {
-  //     const getJson = localStorage.getItem('users');
-  //     let user = JSON.parse(getJson);
-  //     this.check = true;
-  //     this.mylogin = user.login;
-    
-  //   }
-  // }
-  public exit(): void {
-    localStorage.removeItem('users');
-    this.check = false;
-  }
+
+
 
   public menu(): void {
     if (this.checkMenu) {

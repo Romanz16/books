@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { IProduct } from 'src/app/shared/interfaces/product.interface';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
   selector: 'app-product',
@@ -10,6 +11,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class ProductComponent implements OnInit {
   products: Array<IProduct> = [];
+  cartProducts: Array<IProduct> = [];
+  title='';
   product: IProduct = {
     id: '',
     title: '',
@@ -33,8 +36,10 @@ export class ProductComponent implements OnInit {
   };
   prod: string;
   url: string;
+  btnActive = true;
   constructor(private route: ActivatedRoute,
-    private productService: ProductsService) { }
+    private productService: ProductsService,
+    private cart: UsersService) { }
 
 
   ngOnInit() {
@@ -52,11 +57,34 @@ export class ProductComponent implements OnInit {
         this.products.forEach((el) => {
           if (el.alias === this.prod) {
             this.product = Object.assign({}, el);
+            this.title=this.product.title;
           }
         });
 
       });
+     
+ 
+    this.btnDisable();
 
   }
 
+  public addToCart(pr: IProduct): void {
+    this.cart.setData(this.product);
+    this.btnActive = false;
+    this.btnDisable();
+  }
+  public btnDisable(): void {
+    this.cartProducts = this.cart.getData();
+
+     if (this.cartProducts !== null) {
+    for (let i = 0; i < this.cartProducts.length; i++) {
+      console.log('btn2', this.btnActive,  this.title);
+      if (this.cartProducts[i].alias === this.prod) {
+        this.btnActive = false;
+        console.log('btn3', this.btnActive);
+       }
+      }
+    }
+
+  }
 }

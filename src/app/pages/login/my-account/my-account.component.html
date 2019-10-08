@@ -1,0 +1,8 @@
+<div class="content">
+  <h2>Мій акаунт</h2>
+  <div class="login">
+    <div *ngIf="photoURL" class="photo"><img width="100px" height="100px" [src]="photoURL" alt=""></div>
+    <div *ngIf="userLogin" class="photo">{{userLogin}}</div>
+    <div class="photo">{{userEmail}}</div>
+  </div>
+</div>

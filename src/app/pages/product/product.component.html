@@ -21,9 +21,9 @@
 
         <div class="productPrice">
           <div class="detailPrice">Наша ціна : <span> {{product.price}}₴</span>
-            <div>{{product.discount[1]}}  <s>{{product.discount[2]}}₴</s></div>
+            <div>{{product.discount[1]}}  <s *ngIf="product.discount[2]">{{product.discount[2]}}₴</s></div>
           </div>
-          <div class="addBtn"><button class="btn btn-dark">Додати в корзину</button></div>
+          <div  class="addBtn"><button [disabled]="!btnActive" (click)="addToCart(product)" class="btn btn-dark">Додати в корзину</button></div>
         </div>
         <div class="card1">
           <img src="../../../assets/images/Layer_207.png" alt="">

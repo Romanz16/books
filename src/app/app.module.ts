@@ -58,6 +58,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { StorageModule } from '@ngx-pwa/local-storage';
 
 import { AuthService } from "./shared/services/auth.service";
+import { SignUpComponent } from './pages/login/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './pages/login/forgot-password/forgot-password.component';
+import { MyAccountComponent } from './pages/login/my-account/my-account.component';
+import { OrdersComponent } from './pages/orders/orders.component';
 
 
 @NgModule({
@@ -90,7 +94,11 @@ import { AuthService } from "./shared/services/auth.service";
     AdminDiscountsComponent,
     SearchComponent,
     SearchPipe,
-    LoginComponent
+    LoginComponent,
+    SignUpComponent,
+    ForgotPasswordComponent,
+    MyAccountComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
