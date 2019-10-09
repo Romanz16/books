@@ -25,10 +25,6 @@ export class UsersService {
     if (!!obj) {
       this.products =this.products || [];
       this.products.push(obj);
-      // Object.assign({}, obj);
-      // let num: number = 0;
-      // if (this.products) { num = this.products.length; }
-      // this.products[num] = Object.assign({}, obj);
       const cartJson = JSON.stringify(this.products);
       localStorage.setItem('cart', cartJson);
     };
@@ -42,15 +38,15 @@ export class UsersService {
     localStorage.setItem('cart', cartJson);
     this.onproducts.emit(this.products);
   }
+  deleteAllData() {
+    this.products=[];
+    const cartJson = JSON.stringify(this.products);
+    localStorage.setItem('cart', cartJson);
+    this.onproducts.emit(this.products);
+  }
 
   // updateData(obj: IProduct, index) {
   //   this.products.splice(index, 1, obj);
   // }
 
-  // public getUser() {
-  //   return this.firestore.collection('users').snapshotChanges();
-  // }
-  // public getOneUser(id: string) {
-  //   return this.firestore.doc('users/' + id).snapshotChanges();
-  // }
 }

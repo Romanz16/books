@@ -1,8 +1,49 @@
 <div class="content">
   <h2>Мій акаунт</h2>
   <div class="login">
-    <div *ngIf="photoURL" class="photo"><img width="100px" height="100px" [src]="photoURL" alt=""></div>
-    <div *ngIf="userLogin" class="photo">{{userLogin}}</div>
-    <div class="photo">{{userEmail}}</div>
+    <div *ngIf="photoURL"><img class="photo" width="100px" height="100px" [src]="photoURL" alt=""></div>
+    <div *ngIf="userLogin">{{userLogin}}</div>
+    <div>{{userEmail}}</div>
   </div>
+
+
+  <div *ngFor="let order of products | sortByDate; let i=index">
+    <div class="date">{{order.date.toDate() | date: 'dd-MM-yyyy H:mm'}}</div>
+    <table *ngIf="!myOrder"   class="table table-striped table-bordered table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Назва</th>
+          <th scope="col">ПідКатегорія</th>
+          <th scope="col">Автор</th>
+          <th scope="col">Ціна</th>
+          <th scope="col">Кількість</th>
+          <th scope="col">Рік</th>
+          <th scope="col">Видавництво</th>
+          <th scope="col">image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prod of adminProducts | prodById:order; let id=index" >
+
+          <td class="href"
+            [routerLink]="[ '/category',prod.catAlias,prod.subCatAlias,prod.alias,'infoBook' ]">
+            {{prod.title}}</td>
+          <td>{{prod.subCatTitle}}</td>
+          <td>{{prod.author}}</td>
+          <td>{{prod.price}}</td>
+          <td>{{order.uorderCount[id]}}</td>
+          <td>{{prod.year}}</td>
+          <td>{{prod.publishingHouse}}</td>
+
+          <td><img [src]="prod.img" width="50px;" height="70px" alt=""></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="price">Разом: {{order.totalPrice}}грн</div>
+    <hr>
+  </div>
+
+
+
+
 </div>

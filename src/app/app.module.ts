@@ -62,6 +62,9 @@ import { SignUpComponent } from './pages/login/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './pages/login/forgot-password/forgot-password.component';
 import { MyAccountComponent } from './pages/login/my-account/my-account.component';
 import { OrdersComponent } from './pages/orders/orders.component';
+import { SortByDatePipe } from './shared/pipes/sort-by-date.pipe';
+import { ProdByIdPipe } from './shared/pipes/prod-by-id.pipe';
+import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 
 
 @NgModule({
@@ -98,7 +101,10 @@ import { OrdersComponent } from './pages/orders/orders.component';
     SignUpComponent,
     ForgotPasswordComponent,
     MyAccountComponent,
-    OrdersComponent
+    OrdersComponent,
+    SortByDatePipe,
+    ProdByIdPipe,
+    AdminOrdersComponent
   ],
   imports: [
     BrowserModule,

@@ -20,6 +20,7 @@ import { SignUpComponent } from './pages/login/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './pages/login/forgot-password/forgot-password.component';
 import { MyAccountComponent } from './pages/login/my-account/my-account.component';
 import { OrdersComponent } from './pages/orders/orders.component';
+import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home/newArrivals', pathMatch: 'full' },
@@ -48,6 +49,7 @@ const routes: Routes = [
       { path: 'subcategory', component: AdminSubCategoryComponent },
       { path: 'product', component: AdminProductComponent },
       { path: 'discount', component: AdminDiscountsComponent },
+      { path: 'orders', component: AdminOrdersComponent },
     ]
   },
   { path: 'search/:searchText', component: SearchComponent },
