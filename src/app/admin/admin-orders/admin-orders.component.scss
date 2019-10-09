@@ -1,0 +1,68 @@
+$font-SegoeWPSemiLight: 'SegoeWPSemiLight';
+$font-HelveticaRegular: 'HelveticaRegular';
+$color-green: #79b260;
+
+.content {
+  min-height: calc(100vh - 474px);
+  margin-bottom: 25px;
+  margin-top: 15px;
+  border: 1px solid #d8dce0;
+  border-radius: 5px;
+  padding: 5px;
+  .name {
+    color: rgb(197, 20, 20);
+  }
+  h2 {
+    text-align: center;
+    font-size: 35px;
+    line-height: 45px;
+    color: #0e0e0e;
+    font-family: cursive;
+    font-weight: 500;
+    margin: 10px;
+  }
+
+  .href {
+    cursor: pointer;
+  }
+
+  input[type=number] {
+    width: 64px;
+  }
+
+  th {
+    white-space: nowrap;
+  }
+
+  .price {
+    text-align: right;
+    font-size: 24px;
+    color: rgb(231, 31, 31);
+  }
+
+  .date {
+    font-size: 24px;
+    color: rgb(77, 117, 204);
+  }
+
+  .login {
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+    border: 2px double $color-green;
+    border-radius: 5px;
+    font-size: 22px;
+    line-height: 30px;
+    background-color: #d6f5c9;
+
+    div {
+      padding: 5px;
+    }
+
+    .photo {
+      margin: 3px;
+      border: 1px double grey;
+      border-radius: 50%;
+    }
+  }
+}

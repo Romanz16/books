@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { UsersService } from 'src/app/shared/services/users.service';
 import { IProduct } from 'src/app/shared/interfaces/product.interface';
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { OrdersService } from 'src/app/shared/services/orders.service';
