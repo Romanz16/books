@@ -54,34 +54,36 @@ export class OrdersComponent implements OnInit {
     for (let i = 0; i < this.products.length; i++) {
       this.totalPrice += this.count[this.products[i].id] * +this.products[i].price;
     }
-    this.totalPrice=+this.totalPrice.toFixed(2);
+    this.totalPrice = +this.totalPrice.toFixed(2);
   }
   public orders(): void {
     let uorderIdProduct: Array<string> = [];
     let uorderCount: Array<number> = [];
     if (this.products.length === 0) { alert('Ви не обрали жодного товару!') }
     else {
-      for (let i = 0; i < this.products.length; i++) {
-        uorderIdProduct[i] = this.products[i].id;
-        uorderCount[i] = +this.count[this.products[i].id];
+      if (this.phone === '') { alert('Введіть контактний номер телефону!') }
+      else {
+        for (let i = 0; i < this.products.length; i++) {
+          uorderIdProduct[i] = this.products[i].id;
+          uorderCount[i] = +this.count[this.products[i].id];
+        }
+        let date = new Date();
+        let data: any = {
+          'uemail': this.userEmail,
+          'uid': this.uid,
+          'uname': this.userLogin,
+          'uphone': this.phone,
+          'totalPrice': this.totalPrice,
+          'uorderIdProduct': uorderIdProduct,
+          'uorderCount': uorderCount,
+          'date': date
+        }
+        this.firestore.collection('orders').add(data);
+        this.products = [];
+        this.totalPrice = 0;
+        this.userService.deleteAllData();
+        this.myOrder = true;
       }
-      let date = new Date();
-      let data: any = {
-        'uemail': this.userEmail,
-        'uid': this.uid,
-        'uname': this.userLogin,
-        'uphone': this.phone,
-        'totalPrice': this.totalPrice,
-        'uorderIdProduct': uorderIdProduct,
-        'uorderCount': uorderCount,
-        'date': date
-      }
-      this.firestore.collection('orders').add(data);
-      this.products = [];
-      this.totalPrice = 0;
-      this.userService.deleteAllData();
-      this.myOrder = true;
     }
-
   }
 }
