@@ -11,6 +11,7 @@ import { AuthService } from "../../shared/services/auth.service";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { IProduct } from 'src/app/shared/interfaces/product.interface';
 import { ProductsService } from 'src/app/shared/services/products.service';
+import { IOrderProduct } from 'src/app/shared/interfaces/orderproduct';
 
 @Component({
   selector: 'app-header',
@@ -32,7 +33,8 @@ export class HeaderComponent implements OnInit {
   count = 0;
   totalPrice: number = 0;
   userLogin: string = '';
-  products: Array<IProduct> = [];
+  // products: Array<IProduct> = [];
+  products: Array<IOrderProduct> = [];
   constructor(public afAuth: AngularFireAuth, public authService: AuthService, private userService: UsersService, private categoryService: CategoryService, private firestore: AngularFirestore) {
     this.afAuth.authState.subscribe(user => {
       if (user) {
@@ -49,7 +51,7 @@ export class HeaderComponent implements OnInit {
       this.count = this.products.length;
       for (let i = 0; i < this.products.length; i++) {
         this.totalPrice += +(this.products[i].price);
-        this.totalPrice = Math.round(this.totalPrice);
+        this.totalPrice = +this.totalPrice.toFixed(2);
       }
     }
 
@@ -59,8 +61,8 @@ export class HeaderComponent implements OnInit {
         this.count = this.products.length;
         this.totalPrice = 0;
         for (let i = 0; i < this.products.length; i++) {
-          this.totalPrice += +(this.products[i].price);
-          this.totalPrice = Math.round(this.totalPrice);
+          this.totalPrice += +(this.products[i].price)*this.products[i].count;
+          this.totalPrice = +this.totalPrice.toFixed(2);
         }
       }
     })

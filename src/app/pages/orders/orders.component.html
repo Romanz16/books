@@ -1,6 +1,8 @@
 <div class="content">
   <h2>Оформити Замовлення</h2>
   <div *ngIf="myOrder">
+      <div id="toastContainer"></div>
+      
     <h2>Замовлення успішно опрацьовано!</h2>
     <h2>Історію своїх замовлень ви можете простежити на сторінці <a href="" [routerLink]="['/login/my-account']"> Мій
         акаунт</a></h2>
@@ -16,20 +18,20 @@
         <th scope="col">Рік </th>
         <th scope="col">Видавництво</th>
 
-        <th scope="col">image</th>
+        <th scope="col">Книга</th>
 
-        <th scope="col">Delete</th>
+        <th scope="col">Видалити</th>
 
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let prod of products | paginate: { itemsPerPage: 20, currentPage: p }; let i=index">
+      <tr *ngFor="let prod of orderproducts | paginate: { itemsPerPage: 20, currentPage: p }; let i=index">
         <td class="href" [routerLink]="[ '/category',prod.catAlias,prod.subCatAlias,prod.alias,'infoBook' ]">
           {{prod.title}}</td>
         <td>{{prod.subCatTitle}}</td>
         <td>{{prod.author}}</td>
         <td>{{prod.price}}</td>
-        <td><input type="number" (click)="totalPriceFunc()" [(ngModel)]="count[prod.id]" name="count[prod.id]" min="1"
+        <td><input type="number" (click)="counter()" [(ngModel)]="prod.count" name="prod.count" min="1"
             value="1"></td>
         <td>{{prod.year}}</td>
         <td>{{prod.publishingHouse}}</td>
@@ -37,7 +39,7 @@
         <td><img [src]="prod.img" width="50px;" height="70px" alt=""></td>
 
         <td>
-          <button class="btn btn-dark" (click)="deleteProduct(prod,i)">Delete</button>
+          <button class="btn btn-dark" (click)="deleteProduct(prod,i)">Видалити</button>
         </td>
       </tr>
     </tbody>

@@ -1,27 +1,30 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { IProduct } from '../interfaces/product.interface';
+import { IOrderProduct } from '../interfaces/orderproduct';
 //cart
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  products: Array<IProduct> = [];
-  onproducts: EventEmitter<Array<IProduct>> = new EventEmitter();
+  // products: Array<IProduct> = [];
+  products: Array<IOrderProduct> = [];
+  // onproducts: EventEmitter<Array<IProduct>> = new EventEmitter();
+  onproducts: EventEmitter<Array<IOrderProduct>> = new EventEmitter();
   constructor(private firestore: AngularFirestore) {
     const getCart = localStorage.getItem('cart');
     this.products = JSON.parse(getCart);
     this.onproducts.emit(this.products);
   }
 
-  getData(): Array<IProduct> {
+  getData(): Array<IOrderProduct> {
     const getCart = localStorage.getItem('cart');
     this.products = JSON.parse(getCart);
     this.onproducts.emit(this.products);
     return this.products;
   }
 
-  setData(obj: IProduct): void {
+  setData(obj: IOrderProduct): void {
     if (!!obj) {
       this.products =this.products || [];
       this.products.push(obj);
@@ -45,8 +48,9 @@ export class UsersService {
     this.onproducts.emit(this.products);
   }
 
-  // updateData(obj: IProduct, index) {
-  //   this.products.splice(index, 1, obj);
-  // }
+  updateData(obj: IOrderProduct, index) {
+    this.products.splice(index, 1, obj);
+    this.onproducts.emit(this.products);
+  }
 
 }

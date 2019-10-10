@@ -66,7 +66,8 @@ import { SortByDatePipe } from './shared/pipes/sort-by-date.pipe';
 import { ProdByIdPipe } from './shared/pipes/prod-by-id.pipe';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 
-
+import { CommonModule } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -124,7 +125,10 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
     NgxPaginationModule,
     NgMultiSelectDropDownModule.forRoot(),
     StorageModule.forRoot({ IDBNoWrap: true }),
-
+    BrowserAnimationsModule,
+    ToastrModule.forRoot( {  timeOut: 3000,
+      preventDuplicates: true,}),
+    CommonModule,
   ],
   providers: [
     AuthService

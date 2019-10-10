@@ -3,6 +3,8 @@ import { IProduct } from 'src/app/shared/interfaces/product.interface';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { IOrderProduct } from 'src/app/shared/interfaces/orderproduct';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-orders',
@@ -10,8 +12,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-  products: Array<IProduct> = [];
-  count: Array<string> = [];
+  // products: Array<IProduct> = [];
+  // count: Array<string> = [];
+  orderproducts: Array<IOrderProduct> = [];
   totalPrice = 0;
   userLogin: string = '';
   userEmail: string = '';
@@ -20,15 +23,12 @@ export class OrdersComponent implements OnInit {
   uid: string = '';
   myOrder: boolean = false;
   btnDisable: boolean = false;
-  constructor(private userService: UsersService, public afAuth: AngularFireAuth, private firestore: AngularFirestore) {
-    this.products = userService.getData();
-    for (let i = 0; i < this.products.length; i++) {
-      this.count[this.products[i].id] = '1';
-    }
-    for (let i = 0; i < this.products.length; i++) {
-      this.totalPrice += this.count[this.products[i].id] * +this.products[i].price;
-    }
+  constructor(private toastr: ToastrService, private userService: UsersService, public afAuth: AngularFireAuth, private firestore: AngularFirestore) {
+    this.orderproducts = userService.getData();
 
+    for (let i = 0; i < this.orderproducts.length; i++) {
+      this.totalPrice += this.orderproducts[i].count * +this.orderproducts[i].price;
+    }
   }
 
   ngOnInit() {
@@ -47,25 +47,38 @@ export class OrdersComponent implements OnInit {
   }
   public deleteProduct(prod: IProduct, i: number): void {
     this.userService.deleteData(i);
+    this.orderproducts.splice(i,1);
     this.totalPriceFunc();
   }
   public totalPriceFunc(): void {
     this.totalPrice = 0;
-    for (let i = 0; i < this.products.length; i++) {
-      this.totalPrice += this.count[this.products[i].id] * +this.products[i].price;
+    for (let i = 0; i < this.orderproducts.length; i++) {
+      this.totalPrice += this.orderproducts[i].count * +this.orderproducts[i].price;
     }
     this.totalPrice = +this.totalPrice.toFixed(2);
   }
+
+  public counter(): void {
+    this.userService.deleteAllData();
+    for (let i = 0; i < this.orderproducts.length; i++) {
+      this.userService.setData(this.orderproducts[i]);
+    }
+    this.totalPriceFunc();
+  }   
+
   public orders(): void {
     let uorderIdProduct: Array<string> = [];
     let uorderCount: Array<number> = [];
-    if (this.products.length === 0) { alert('Ви не обрали жодного товару!') }
+    if (this.orderproducts.length === 0) { this.toastr.info('Ви не обрали жодного товару','Увага'); }
     else {
-      if (this.phone === '') { alert('Введіть контактний номер телефону!') }
+      if (this.phone === '') {
+        this.toastr.error("Введіть контактний номер телефону!"); }
+        
       else {
-        for (let i = 0; i < this.products.length; i++) {
-          uorderIdProduct[i] = this.products[i].id;
-          uorderCount[i] = +this.count[this.products[i].id];
+        for (let i = 0; i < this.orderproducts.length; i++) {
+          uorderIdProduct[i] = this.orderproducts[i].id;
+          // uorderCount[i] = +this.count[this.products[i].id];
+          uorderCount[i] = this.orderproducts[i].count;
         }
         let date = new Date();
         let data: any = {
@@ -79,11 +92,12 @@ export class OrdersComponent implements OnInit {
           'date': date
         }
         this.firestore.collection('orders').add(data);
-        this.products = [];
+        this.orderproducts = [];
         this.totalPrice = 0;
         this.userService.deleteAllData();
         this.myOrder = true;
       }
     }
   }
+
 }

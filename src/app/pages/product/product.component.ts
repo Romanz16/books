@@ -3,6 +3,7 @@ import { ProductsService } from 'src/app/shared/services/products.service';
 import { IProduct } from 'src/app/shared/interfaces/product.interface';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { UsersService } from 'src/app/shared/services/users.service';
+import { IOrderProduct } from 'src/app/shared/interfaces/orderproduct';
 
 @Component({
   selector: 'app-product',
@@ -69,7 +70,9 @@ export class ProductComponent implements OnInit {
   }
 
   public addToCart(pr: IProduct): void {
-    this.cart.setData(this.product);
+    let ordersProduct:IOrderProduct;
+    ordersProduct =Object.assign({}, this.product,{'count':1});
+    this.cart.setData(ordersProduct);
     this.btnActive = false;
     this.btnDisable();
   }
