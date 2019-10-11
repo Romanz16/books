@@ -365,7 +365,7 @@ export class AdminProductComponent implements OnInit {
       date: mydate,
       alias: data.alias,
     };
-
+ 
     this.firestore.doc('products/' + form.value.id).update(this.obj);
     this.resetForm();
     this.editStatus = false;

@@ -68,6 +68,8 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
+import {NgxMaskModule, IConfig} from 'ngx-mask';
+export let options: Partial<IConfig> | (() => Partial<IConfig>);
 @NgModule({
   declarations: [
     AppComponent,
@@ -129,6 +131,7 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot( {  timeOut: 3000,
       preventDuplicates: true,}),
     CommonModule,
+    NgxMaskModule.forRoot(options),
   ],
   providers: [
     AuthService

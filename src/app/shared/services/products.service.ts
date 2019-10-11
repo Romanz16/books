@@ -27,4 +27,10 @@ export class ProductsService {
   public getAuthor() {
     return this.firestore.collection('author').snapshotChanges();
   } 
+  public getUserDetails() {
+    return this.firestore.collection('usersDetails').snapshotChanges();
+  }
+  public getOneUser(id: string) {
+    return this.firestore.doc('usersDetails/' + id).snapshotChanges();
+  }
 }

@@ -1,10 +1,11 @@
 <div class="content">
   <h2>Оформити Замовлення</h2>
   <div *ngIf="myOrder">
-      <div id="toastContainer"></div>
-      
+    <div id="toastContainer"></div>
+
     <h2>Замовлення успішно опрацьовано!</h2>
-    <h2>Історію своїх замовлень ви можете простежити на сторінці <a href="" [routerLink]="['/login/my-account']"> Мій
+    <h2 *ngIf="userEmail!==''">Історію своїх замовлень ви можете простежити на сторінці <a href=""
+        [routerLink]="['/login/my-account']"> Мій
         акаунт</a></h2>
   </div>
   <table *ngIf="!myOrder" class="table table-striped table-bordered table-sm">
@@ -17,11 +18,8 @@
         <th scope="col">Кількість</th>
         <th scope="col">Рік </th>
         <th scope="col">Видавництво</th>
-
         <th scope="col">Книга</th>
-
         <th scope="col">Видалити</th>
-
       </tr>
     </thead>
     <tbody>
@@ -31,8 +29,7 @@
         <td>{{prod.subCatTitle}}</td>
         <td>{{prod.author}}</td>
         <td>{{prod.price}}</td>
-        <td><input type="number" (click)="counter()" [(ngModel)]="prod.count" name="prod.count" min="1"
-            value="1"></td>
+        <td><input type="number" (click)="counter()" [(ngModel)]="prod.count" name="prod.count" min="1" value="1"></td>
         <td>{{prod.year}}</td>
         <td>{{prod.publishingHouse}}</td>
 
@@ -46,17 +43,34 @@
   </table>
   <div *ngIf="!myOrder && totalPrice" class="price">Разом: {{totalPrice}}грн</div>
 
-  <div class="auth" *ngIf="userEmail===''">Оформляти замовлення можуть лише авторизовані користувачі. <a
-      [routerLink]="['/login']" href="">Авторизуватися</a></div>
+  <!-- <div class="auth" *ngIf="userEmail===''">Оформляти замовлення можуть лише авторизовані користувачі. <a
+      [routerLink]="['/login']" href="">Авторизуватися</a></div> -->
   <div *ngIf="userEmail!==''">
     <div *ngIf="!myOrder" class="login">
       <div *ngIf="photoURL"><img class="photo" width="100px" height="100px" [src]="photoURL" alt=""></div>
       <div *ngIf="userLogin">{{userLogin}}</div>
       <div>{{userEmail}}</div>
-      <div> <input [(ngModel)]="phone" #pp="ngModel" name="phone" type="text" class="form-control"
-          placeholder="Контактний номер телефону..." required>
+      <div> <input [(ngModel)]="phone" prefix="+38" mask='(000) 000-0000' #pp="ngModel" name="phone"
+          type="text" class="form-control" placeholder="Контактний номер телефону..." required>
       </div>
       <div> <button type="button" (click)="orders()" class="btn btn-primary btn-block">Замовити</button></div>
     </div>
   </div>
+
+  <div *ngIf="userEmail===''">
+    <div *ngIf="!myOrder" class="login">
+      <!-- <div *ngIf="photoURL"><img class="photo" width="100px" height="100px" [src]="photoURL" alt=""></div> -->
+      <div> <input [(ngModel)]="nologinUser.login" #pl="ngModel" name="nologinUser.login" type="text"
+          class="form-control" placeholder="Ваше Імя..." required></div>
+      <div> <input [(ngModel)]="nologinUser.email" #pe="ngModel" name="nologinUser.email" type="text"
+          class="form-control" placeholder="Email..." required></div>
+      <div>
+        <input [(ngModel)]="nologinUser.phone" prefix="+38" mask='(000) 000-0000' #pp="ngModel" name="nologinUser.phone"
+          type="text" class="form-control" placeholder="Контактний номер телефону..." required>
+      </div>
+      <div> <button type="button" (click)="nologinorders()" class="btn btn-primary btn-block">Замовити</button></div>
+    </div>
+  </div>
+
+
 </div>

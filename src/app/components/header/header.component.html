@@ -1,10 +1,11 @@
 <header>
   <div class="header-top">
-    <div class="mycontainer" >
-     <span  *ngIf="userLogin">{{userLogin}}</span>
+    <div class="mycontainer">
+      <span *ngIf="userLogin">{{userLogin}}</span>
       <a *ngIf="!userLogin" [routerLink]="['/login']">Вхід</a>
-      <a  *ngIf="userLogin" (click)="authService.SignOut()">Вихід</a>
-      <a [routerLink]="['/login/my-account']"  >Мій акаунт</a>
+      <a *ngIf="!userLogin" [routerLink]="['/login./sign-up']">Зареєструватись</a>
+      <a *ngIf="userLogin" (click)="authService.SignOut()">Вихід</a>
+      <a *ngIf="userLogin" [routerLink]="['/login/my-account']">Мій акаунт</a>
       <!-- <a href="">Help</a>  -->
     </div>
   </div>
@@ -19,8 +20,8 @@
 
           <input type="text" [(ngModel)]="searchText" name="searchText">
           <div [routerLink]="[ '/search', searchText ]"><img src="../../../assets/images/Shape_7.png" alt="">
-            <span  class="searchBtn">Пошук</span>
-            
+            <span class="searchBtn">Пошук</span>
+
           </div>
 
         </div>
@@ -31,7 +32,8 @@
               Ваш кошик <span>({{count}} товари)</span>
             </div>
             <div class="price">
-             {{totalPrice}}₴ <button type="button" [routerLink]="['/orders']" class="btn btn-dark checkout" value="">замовити</button>
+              {{totalPrice}}₴ <button type="button" [routerLink]="['/orders']" class="btn btn-dark checkout"
+                value="">замовити</button>
             </div>
           </div>
           <!-- <div class="wishList">
