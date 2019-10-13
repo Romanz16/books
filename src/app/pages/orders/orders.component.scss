@@ -64,3 +64,20 @@ $color-green: #79b260;
 #toast-container > div {
   opacity:1;
 }
+.decCount,.incCount{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  font-size: 16px;
+  text-align: center;
+  border: 1px solid $color-green;
+  border-radius: 50%;
+  background-color: $color-green;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.decCount :hover,.incCount :hover{
+  background-color: rgb(1, 104, 1);
+}

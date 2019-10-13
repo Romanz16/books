@@ -77,7 +77,7 @@ export class OrdersComponent implements OnInit {
           } as any;
         }).filter(elem => {
           if (elem.uid === this.uid) {
-          this.phone = elem.phone || '';
+            this.phone = elem.phone || '';
             return elem;
           }
         });
@@ -97,13 +97,13 @@ export class OrdersComponent implements OnInit {
     this.totalPrice = +this.totalPrice.toFixed(2);
   }
 
-  public counter(): void {
-    this.userService.deleteAllData();
-    for (let i = 0; i < this.orderproducts.length; i++) {
-      this.userService.setData(this.orderproducts[i]);
-    }
-    this.totalPriceFunc();
-  }
+  // public counter(): void {
+  //   this.userService.deleteAllData();
+  //   for (let i = 0; i < this.orderproducts.length; i++) {
+  //     this.userService.setData(this.orderproducts[i]);
+  //   }
+  //   this.totalPriceFunc();
+  // }
 
 
   public orders(): void {
@@ -120,7 +120,7 @@ export class OrdersComponent implements OnInit {
           // uorderCount[i] = +this.count[this.products[i].id];
           uorderCount[i] = this.orderproducts[i].count;
         }
-        this.phone=this.phone || '';
+        this.phone = this.phone || '';
         let date = new Date();
         let data: any = {
           'uemail': this.userEmail,
@@ -193,4 +193,23 @@ export class OrdersComponent implements OnInit {
       this.myOrder = true;
     }
   }
+  public decCount(i: number): void {
+    if (this.orderproducts[i].count > 1) {
+      --this.orderproducts[i].count;
+      this.userService.deleteAllData();
+      for (let i = 0; i < this.orderproducts.length; i++) {
+        this.userService.setData(this.orderproducts[i]);
+      }
+      this.totalPriceFunc();
+    }
+  }
+  public incCount(i: number): void {
+    this.orderproducts[i].count++;
+    this.userService.deleteAllData();
+    for (let i = 0; i < this.orderproducts.length; i++) {
+      this.userService.setData(this.orderproducts[i]);
+    }
+    this.totalPriceFunc();
+  }
+
 }

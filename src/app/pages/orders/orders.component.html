@@ -1,5 +1,6 @@
 <div class="content">
-  <!--send email  https://www.youtube.com/watch?v=JVy0JpCOuNI  https://angularfirebase.com/lessons/sendgrid-v3-nodejs-transactional-email-cloud-function/ -->
+  <!--send email  https://www.geekstrick.com/send-email-using-php-and-javascript/
+      https://www.youtube.com/watch?v=JVy0JpCOuNI  https://angularfirebase.com/lessons/sendgrid-v3-nodejs-transactional-email-cloud-function/ -->
   <h2>Оформити Замовлення</h2>
   <div *ngIf="myOrder">
     <div id="toastContainer"></div>
@@ -30,7 +31,12 @@
         <td>{{prod.subCatTitle}}</td>
         <td>{{prod.author}}</td>
         <td>{{prod.price}}</td>
-        <td><input type="number" (click)="counter()" [(ngModel)]="prod.count" name="prod.count" min="1" value="1"></td>
+        <td style="text-align: center;">
+          <span (click)="decCount(i)" class="decCount">-</span>
+          {{prod.count}}
+          <span (click)="incCount(i)" class="incCount">+</span>
+          <!-- <input type="number" (click)="counter()" [(ngModel)]="prod.count" name="prod.count" min="1" value="1"> -->
+        </td>
         <td>{{prod.year}}</td>
         <td>{{prod.publishingHouse}}</td>
 
@@ -51,8 +57,8 @@
       <div *ngIf="photoURL"><img class="photo" width="100px" height="100px" [src]="photoURL" alt=""></div>
       <div *ngIf="userLogin">{{userLogin}}</div>
       <div>{{userEmail}}</div>
-      <div> <input [(ngModel)]="phone" prefix="+38" mask='(000) 000-0000' #pp="ngModel" name="phone"
-          type="text" class="form-control" placeholder="Контактний номер телефону..." required>
+      <div> <input [(ngModel)]="phone" prefix="+38" mask='(000) 000-0000' #pp="ngModel" name="phone" type="text"
+          class="form-control" placeholder="Контактний номер телефону..." required>
       </div>
       <div> <button type="button" (click)="orders()" class="btn btn-primary btn-block">Замовити</button></div>
     </div>
