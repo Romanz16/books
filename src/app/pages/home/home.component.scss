@@ -41,3 +41,21 @@ $font-HelveticaRegular: 'HelveticaRegular';
   font-size: 18px !important;
   font-weight: 400 !important;
 }
+.imgbook{
+  position: absolute;
+  top:20px;
+  left:100px;
+  img{
+    width: 190px;
+    height: 260px;
+    border-radius: 8px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+
+}
+.carousel-caption{
+  h3{
+    font-size: 22px;
+  }
+}

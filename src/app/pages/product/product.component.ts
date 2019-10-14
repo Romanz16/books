@@ -73,6 +73,7 @@ export class ProductComponent implements OnInit {
             this.product = Object.assign({}, el);
             // this.allComments=Object.assign({}, JSON.parse(this.product.comments));
             this.title = this.product.title;
+            this.allComments = [];
             this.product.comments.forEach((el) => {
               this.allComments.push(JSON.parse(el));
             })

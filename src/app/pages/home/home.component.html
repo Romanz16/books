@@ -1,31 +1,34 @@
 <div class="content">
   <div class="slider">
     <!-- https://www.freakyjolly.com/angular-7-bootstrap-4-add-image-content-slider-carousel-using-ng-bootstrap-in-angular-7-applications/ -->
-    <ngb-carousel *ngIf="images" showNavigationArrows="true" interval="2000" pauseOnHover="true">
+    <ngb-carousel *ngIf="images" showNavigationArrows="true" interval="4000" pauseOnHover="true">
       <ng-template ngbSlide>
         <img [src]="images[0]" alt="Random first slide">
+        <!-- <div class="imgbook"> <img src="https://firebasestorage.googleapis.com/v0/b/books-c37db.appspot.com/o/images%2F4hf88fy6f3y?alt=media&token=636b1fad-cc2f-4cb9-82d3-7728de345916" alt="Random third slide"></div> -->
         <div class="carousel-caption">
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>Найкращі книги</h3>
+          <p>У нас ви знайдете всі найпопулярніші та найбільш затребувані книги</p>
         </div>
       </ng-template>
       <ng-template ngbSlide>
         <img [src]="images[1]" alt="Random second slide">
+        <!-- <div class="imgbook"> <img src="https://firebasestorage.googleapis.com/v0/b/books-c37db.appspot.com/o/images%2F4hf88fy6f3y?alt=media&token=636b1fad-cc2f-4cb9-82d3-7728de345916" alt="Random third slide"></div> -->
         <div class="carousel-caption">
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>Найнижчі ціни</h3>
+          <p>У нас найнижчі ціни, а також велика кількість знижок</p>
         </div>
       </ng-template>
       <ng-template ngbSlide>
         <img [src]="images[2]" alt="Random third slide">
+        <!-- <div class="imgbook"> <img src="https://firebasestorage.googleapis.com/v0/b/books-c37db.appspot.com/o/images%2F4hf88fy6f3y?alt=media&token=636b1fad-cc2f-4cb9-82d3-7728de345916" alt="Random third slide"></div> -->
         <div class="carousel-caption">
-          <h3>Third slide label</h3>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          <h3>Швидко, якісно, доступно</h3>
+          <p>Ми дбаємо, щоб ви отримали Найкраще.</p>
         </div>
       </ng-template>
     </ngb-carousel>
   </div> 
-
+ 
 
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
