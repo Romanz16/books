@@ -5,15 +5,19 @@
     <div *ngIf="userLogin">{{userLogin}}</div>
     <div>{{userEmail}}</div>
     <div class="form">
+      <div>Ваше Імя</div>
+      <input [(ngModel)]="userLogin" #pn="ngModel" name="userLogin" type="text" class="form-control" id="userLogin"
+        placeholder="Ваше Імя..." required>
+    </div>
+    <div class="form">
       <div>Контактний номер телефону</div>
-      <input [(ngModel)]="phone" prefix="+38" mask='(000) 000-0000' #pp="ngModel" name="phone"
-        type="text" class="form-control" id="phone" placeholder="Контактний номер телефону..." required>
+      <input [(ngModel)]="phone" prefix="+38" mask='(000) 000-0000' #pp="ngModel" name="phone" type="text"
+        class="form-control" id="phone" placeholder="Контактний номер телефону..." required>
     </div>
 
     <div class="form">
       <div>Стать</div>
-      <select [(ngModel)]="gender" required name="gender" #cc="ngModel"
-        class="custom-select form-control" id="gender">
+      <select [(ngModel)]="gender" required name="gender" #cc="ngModel" class="custom-select form-control" id="gender">
         <option *ngIf="gender ===''" selected value="">Оберіть стать</option>
         <option value="male">Чоловіча</option>
         <option value="female">Жіноча</option>
@@ -25,8 +29,8 @@
     <div class="form">
       <div>Дата народження</div>
       <div class="input-group">
-        <input minDate="1900" class="form-control" placeholder="yyyy-mm-dd" name="date" id="birthday"
-          [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker">
+        <input minDate="1900" class="form-control" placeholder="yyyy-mm-dd" name="date" id="birthday" [(ngModel)]="date"
+          ngbDatepicker #d="ngbDatepicker">
         <div style="margin-top: 0px;" class="input-group-append">
           <button style="height: 38px;" class="btn btn-primary calendar" (click)="d.toggle()" type="button"><i
               class="fal fa-calendar-alt"></i></button>
@@ -36,11 +40,12 @@
 
     <div class="form">
       <div>Ваш населений пункт</div>
-      <input [(ngModel)]="city" #pp="ngModel" name="city" id="city" type="text"
-        class="form-control" placeholder="Ваше місто..." required>
+      <input [(ngModel)]="city" #pp="ngModel" name="city" id="city" type="text" class="form-control"
+        placeholder="Ваше місто..." required>
     </div>
 
-    <div> <button type="button" (click)="myaccount()" class="btn btn-primary btn-block mt-2">Зберегти зміни</button></div>
+    <div> <button type="button" (click)="myaccount()" class="btn btn-primary btn-block mt-2">Зберегти зміни</button>
+    </div>
   </div>
 
 

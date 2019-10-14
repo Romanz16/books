@@ -48,7 +48,8 @@ $color-green: #79b260;
     width: 250px;
     height: 391px;
     margin: 0 3px;
-    img{
+
+    img {
       height: 391px;
       width: 250px;
     }
@@ -111,7 +112,8 @@ $color-green: #79b260;
             font-size: 17px;
             font-weight: 400;
             line-height: 17px;
-            s{
+
+            s {
               color: blue;
               font-size: 20px;
               margin-left: 5px;
@@ -199,7 +201,9 @@ $color-green: #79b260;
 
     // border-bottom: 1px solid #d8dce0;
     .avatar {
+      width: 175px;
       margin: 0 26px;
+      text-align: center;
 
       img {
         width: 63px;
@@ -207,15 +211,18 @@ $color-green: #79b260;
       }
 
       .name {
-        text-align: center;
+        width: 100%;
+        text-align: center !important;
         color: #a2a2a2;
         font-size: 14px;
         font-weight: 400;
-        line-height: 26px;
+        line-height: 16px;
+        text-align: left;
       }
     }
 
     .message {
+      width: 100%;
       margin-right: 26px;
       color: #7e7e7e;
       font-family: $font-SegoeUI;

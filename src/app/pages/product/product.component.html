@@ -16,14 +16,15 @@
       </div>
       <div class="text">
         {{product.description}}
-      </div> 
+      </div>
       <div class="price">
 
         <div class="productPrice">
           <div class="detailPrice">Наша ціна : <span> {{product.price}}₴</span>
-            <div>{{product.discount[1]}}  <s *ngIf="product.discount[2]">{{product.discount[2]}}₴</s></div>
+            <div>{{product.discount[1]}} <s *ngIf="product.discount[2]">{{product.discount[2]}}₴</s></div>
           </div>
-          <div  class="addBtn"><button [disabled]="!btnActive" (click)="addToCart(product)" class="btn btn-dark">Додати в корзину</button></div>
+          <div class="addBtn"><button [disabled]="!btnActive" (click)="addToCart(product)" class="btn btn-dark">Додати в
+              корзину</button></div>
         </div>
         <div class="card1">
           <img src="../../../assets/images/Layer_207.png" alt="">
@@ -39,46 +40,55 @@
 
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a routerLinkActive="active" [routerLink]="[ '/category', product.catAlias, product.subCatAlias, product.alias, 'infoBook']" class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+        <a routerLinkActive="active"
+          [routerLink]="[ '/category', product.catAlias, product.subCatAlias, product.alias, 'infoBook']"
+          class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
           aria-controls="nav-home" aria-selected="true">Про книгу</a>
-        <a routerLinkActive="active" [routerLink]="[ '/category', product.catAlias, product.subCatAlias, product.alias, 'detailsBook' ]" class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+        <a routerLinkActive="active"
+          [routerLink]="[ '/category', product.catAlias, product.subCatAlias, product.alias, 'detailsBook' ]"
+          class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
           aria-controls="nav-profile" aria-selected="false">Інша
           інформація</a>
-         
+
       </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
-        
-      <div *ngIf="route.children[0].snapshot.url.join('') === 'infoBook'" class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-          <app-info-about-book></app-info-about-book>
-        </div>
-      <div *ngIf="route.children[0].snapshot.url.join('') === 'detailsBook'" class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+      <div *ngIf="route.children[0].snapshot.url.join('') === 'infoBook'" class="tab-pane fade show active"
+        id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <app-info-about-book></app-info-about-book>
+      </div>
+      <div *ngIf="route.children[0].snapshot.url.join('') === 'detailsBook'" class="tab-pane fade show active"
+        id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
         <app-details-book></app-details-book>
       </div>
 
     </div>
 
-    <!-- <div class="comment">
-      <div class="title">
-        Відгуки про книгу
-      </div>
-      <div class="review">
-        <div class="avatar">
-          <img src="../../../assets/images/comment.png" alt="">
-          <div class="name">Name 1</div>
-        </div>
-        <div class="message">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-          standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-          make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-          typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-          sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-          PageMaker including versions of Lorem Ipsum.
-        </div>
 
+
+
+    <div class="comment">
+     
+        <div class="title">
+          Відгуки про книгу
+        </div>
+        <div *ngFor="let comment of allComments">
+        <div class="review">
+          <div class="avatar">
+            <img *ngIf="!comment.photoURL" src="../../../assets/images/comment.png" alt="">
+            <img *ngIf="comment.photoURL" [src]="comment.photoURL" alt="">
+            <div *ngIf="comment.displayName" class="name">{{comment.displayName}}</div>
+            <div *ngIf="!comment.displayName" class="name">{{comment.email}}</div>
+          </div>
+          <div class="message">
+           {{comment.comment}}
+          </div>
+
+        </div>
+        <div class="hr"></div>
       </div>
-      <div class="hr"></div>
-      <div class="review">
+      <!-- <div class="review">
         <div class="avatar">
           <img src="../../../assets/images/comment.png" alt="">
           <div class="name">Name 2</div>
@@ -91,16 +101,25 @@
           sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
           PageMaker including versions of Lorem Ipsum.
         </div>
+      </div> -->
+
+      <div *ngIf="!userEmail" class="title">
+        Залишити відгук можуть лише <a [routerLink]="['/login']">Авторизовані</a> користувачі
       </div>
-      <div class="title">
+      <div *ngIf="userEmail" class="title">
         Написати відгук
       </div>
-      <form name="comment" class="form">
+      <form *ngIf="userEmail" name="comment" class="form">
         <div class="form-group">
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <textarea [(ngModel)]="comment" name="comment" class="form-control" id="comment" rows="3"></textarea>
         </div>
-        <div class="btnR"> <button class="btn btn-dark pull-righ">Відправити</button></div>
+        <div class="btnR"> <button (click)="addcomment()" class="btn btn-dark pull-righ">Відправити</button></div>
       </form>
-    </div> -->
+
+
+    </div>
+
+
+
   </div>
 </div>

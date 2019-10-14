@@ -23,12 +23,12 @@ export class MyAccountComponent implements OnInit {
   uid: string = '';
   sort1: Array<number> = [3, 3, 3, 3, 3, 3, 3];
   phone: string = '';
- gender= '';
+  gender = '';
   date: string = '';
   city: string = '';
   usersDetails: Array<any> = [
     {
-      phone:'',
+      phone: '',
       date: '',
       gender: '',
       uid: '',
@@ -60,12 +60,12 @@ export class MyAccountComponent implements OnInit {
             id: item.payload.doc.id,
             ...item.payload.doc.data()
           } as any;
-        }).filter(elem =>  {
+        }).filter(elem => {
           if (elem.uid === this.uid) {
-          this.phone = elem.phone || '';
-          this.gender = elem.gender || '';
-          this.city = elem.city || '';
-          this.date = elem.date || '';
+            this.phone = elem.phone || '';
+            this.gender = elem.gender || '';
+            this.city = elem.city || '';
+            this.date = elem.date || '';
             return elem;
           }
         });
@@ -95,8 +95,8 @@ export class MyAccountComponent implements OnInit {
   }
 
   public myaccount(): void {
-    if (this.phone === '' || this.phone.length!=10) {
-      this.toastr.error("Введіть коректний номер телефону!","Увага!");
+    if (this.phone === '' || this.phone.length != 10) {
+      this.toastr.error("Введіть коректний номер телефону!", "Увага!");
     }
 
     else {
@@ -109,6 +109,21 @@ export class MyAccountComponent implements OnInit {
       };
       // this.firestore.doc('usersDetails/' + this.uid).update(obj);
       // this.firestore.doc('usersDetails/' + this.uid).delete()
+      if (this.userLogin !== '') {
+        let objnew: any = {
+          displayName: this.userLogin,
+          email: this.userEmail,
+          emailVerified: this.emailVerified,
+          photoURL: this.photoURL,
+          uid: this.uid
+        }
+        this.firestore.doc('users/' + this.uid).update(objnew);
+        let user: any= JSON.parse(localStorage.getItem('user'));
+        user.displayName=this.userLogin;
+        const cartJson = JSON.stringify(user);
+        localStorage.removeItem('user');
+        localStorage.setItem('user',cartJson);
+      }
       this.firestore.collection('usersDetails').doc(this.uid).set(obj);
       this.toastr.success("Контактні дані успішно оновлено!");
     }
