@@ -6,7 +6,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { IOrderProduct } from 'src/app/shared/interfaces/orderproduct';
 import { ToastrService } from 'ngx-toastr';
 import { ProductsService } from 'src/app/shared/services/products.service';
-
+import { SendgridService } from 'ngx-sendgrid';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -47,7 +47,7 @@ export class OrdersComponent implements OnInit {
       city: '',
     }
 
-  constructor(private productService: ProductsService, private toastr: ToastrService, private userService: UsersService, public afAuth: AngularFireAuth, private firestore: AngularFirestore) {
+  constructor(private service: SendgridService, private productService: ProductsService, private toastr: ToastrService, private userService: UsersService, public afAuth: AngularFireAuth, private firestore: AngularFirestore) {
     this.orderproducts = userService.getData();
 
     for (let i = 0; i < this.orderproducts.length; i++) {
@@ -117,7 +117,6 @@ export class OrdersComponent implements OnInit {
       else {
         for (let i = 0; i < this.orderproducts.length; i++) {
           uorderIdProduct[i] = this.orderproducts[i].id;
-          // uorderCount[i] = +this.count[this.products[i].id];
           uorderCount[i] = this.orderproducts[i].count;
         }
         this.phone = this.phone || '';
@@ -137,6 +136,7 @@ export class OrdersComponent implements OnInit {
         this.totalPrice = 0;
         this.userService.deleteAllData();
         this.myOrder = true;
+        this.sendEmail();
       }
     }
   }
@@ -211,5 +211,36 @@ export class OrdersComponent implements OnInit {
     }
     this.totalPriceFunc();
   }
+  public sendEmail(): void {
+   let to='roman123q@ukr.net';
+   let from='zhyshkovych16@gmail.com';
+   let subject='Orders';
+   let content='content';
+   console.log('email');
+   
+      this.service.BasicEmailToSingleUser( to, from, subject, content).subscribe(result=>{
+      console.log('resemail',result)
+      })
+   
+  //   let data = {
+  //     'name': 'roma',
+  //     'email': 'roman123q@ukr.net',
+  //     'contact': '0984543543',
+  //     'message' : 'message'
+  // };
+  //   let http = new XMLHttpRequest();
+  //   let url = 'get_data.php';
+  //   let params = 'orem=ipsum&name=binny';
+  //   http.open('POST', url, true);
 
+  //   //Send the proper header information along with the request
+  //   http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+  //   http.onreadystatechange = function () {//Call a function when the state changes.
+  //     if (http.readyState == 4 && http.status == 200) {
+  //       alert(http.responseText);
+  //     }
+  //   }
+  //   http.send(params);
+  }
 }

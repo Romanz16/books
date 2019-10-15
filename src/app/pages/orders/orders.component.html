@@ -4,7 +4,7 @@
   <h2>Оформити Замовлення</h2>
   <div *ngIf="myOrder">
     <div id="toastContainer"></div>
-
+ 
     <h2>Замовлення успішно опрацьовано!</h2>
     <h2 *ngIf="userEmail!==''">Історію своїх замовлень ви можете простежити на сторінці <a href=""
         [routerLink]="['/login/my-account']"> Мій
@@ -78,6 +78,5 @@
       <div> <button type="button" (click)="nologinorders()" class="btn btn-primary btn-block">Замовити</button></div>
     </div>
   </div>
-
 
 </div>

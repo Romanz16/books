@@ -66,6 +66,8 @@ import { SortByDatePipe } from './shared/pipes/sort-by-date.pipe';
 import { ProdByIdPipe } from './shared/pipes/prod-by-id.pipe';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 
+import { SendgridModule,  SendgridService  } from 'ngx-sendgrid';
+
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import {NgxMaskModule, IConfig} from 'ngx-mask';
@@ -132,6 +134,7 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
       preventDuplicates: true,}),
     CommonModule,
     NgxMaskModule.forRoot(options),
+    SendgridModule.forRoot({token:'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'})
   ],
   providers: [
     AuthService
