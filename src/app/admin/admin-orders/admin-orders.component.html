@@ -1,6 +1,6 @@
 <div class="content">
       
-        <div *ngFor="let order of products | sortByDate; let i=index">
+        <div *ngFor="let order of products | sortByDate | paginate: { itemsPerPage: 10, currentPage: p }; let i=index">
           <div class="date">{{order.date.toDate() | date: 'dd-MM-yyyy H:mm'}}</div>
           <div class="name">{{order.uname}}</div>
           <div class="name">{{order.uemail}}</div>
@@ -38,7 +38,8 @@
           <div class="price">Разом: {{order.totalPrice}}грн</div>
           <hr>
         </div>
-      
+        <pagination-controls class="my-pagination"  autoHide="true" (pageChange)="p = $event" previousLabel="Назад" nextLabel="Вперед">
+        </pagination-controls>
       
       
       

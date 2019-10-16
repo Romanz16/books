@@ -28,7 +28,7 @@ export class NewArrivalsComponent implements OnInit {
           } as any;
         });
       }
-    );
+    ); 
     this.categoryService.getCategories().subscribe(
       myArray => {
         this.category = myArray.map(item => {

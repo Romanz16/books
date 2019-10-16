@@ -1,18 +1,20 @@
 <div class="content">
   <div class="slider">
     <!-- https://www.freakyjolly.com/angular-7-bootstrap-4-add-image-content-slider-carousel-using-ng-bootstrap-in-angular-7-applications/ -->
+    
     <ngb-carousel *ngIf="images" showNavigationArrows="true" interval="4000" pauseOnHover="true">
-      <ng-template ngbSlide>
-        <img [src]="images[0]" alt="Random first slide">
-        <!-- <div class="imgbook"> <img src="https://firebasestorage.googleapis.com/v0/b/books-c37db.appspot.com/o/images%2F4hf88fy6f3y?alt=media&token=636b1fad-cc2f-4cb9-82d3-7728de345916" alt="Random third slide"></div> -->
+      <ng-template ngbSlide *ngFor="let prod of products | filterTopNew:'3' let i=index">
+        <img [src]="images[i]"  alt="Random first slide">
+        <div class="imgbook"> <img [src]="prod.img" alt="Random third slide"></div>
         <div class="carousel-caption">
-          <h3>Найкращі книги</h3>
-          <p>У нас ви знайдете всі найпопулярніші та найбільш затребувані книги</p>
+          <h3  [routerLink]="[ '/category',prod.catAlias,prod.subCatAlias,prod.alias,'infoBook' ]">{{prod.title}}</h3>
+          <p>{{prod.description}}</p>
         </div>
+       
       </ng-template>
-      <ng-template ngbSlide>
+      <!-- <ng-template ngbSlide>
         <img [src]="images[1]" alt="Random second slide">
-        <!-- <div class="imgbook"> <img src="https://firebasestorage.googleapis.com/v0/b/books-c37db.appspot.com/o/images%2F4hf88fy6f3y?alt=media&token=636b1fad-cc2f-4cb9-82d3-7728de345916" alt="Random third slide"></div> -->
+        <div class="imgbook"> <img src="https://firebasestorage.googleapis.com/v0/b/books-c37db.appspot.com/o/images%2F4hf88fy6f3y?alt=media&token=636b1fad-cc2f-4cb9-82d3-7728de345916" alt="Random third slide"></div>
         <div class="carousel-caption">
           <h3>Найнижчі ціни</h3>
           <p>У нас найнижчі ціни, а також велика кількість знижок</p>
@@ -20,12 +22,12 @@
       </ng-template>
       <ng-template ngbSlide>
         <img [src]="images[2]" alt="Random third slide">
-        <!-- <div class="imgbook"> <img src="https://firebasestorage.googleapis.com/v0/b/books-c37db.appspot.com/o/images%2F4hf88fy6f3y?alt=media&token=636b1fad-cc2f-4cb9-82d3-7728de345916" alt="Random third slide"></div> -->
+        <div class="imgbook"> <img src="https://firebasestorage.googleapis.com/v0/b/books-c37db.appspot.com/o/images%2F4hf88fy6f3y?alt=media&token=636b1fad-cc2f-4cb9-82d3-7728de345916" alt="Random third slide"></div>
         <div class="carousel-caption">
           <h3>Швидко, якісно, доступно</h3>
           <p>Ми дбаємо, щоб ви отримали Найкраще.</p>
         </div>
-      </ng-template>
+      </ng-template> -->
     </ngb-carousel>
   </div> 
  

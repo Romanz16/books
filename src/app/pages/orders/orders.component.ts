@@ -7,6 +7,8 @@ import { IOrderProduct } from 'src/app/shared/interfaces/orderproduct';
 import { ToastrService } from 'ngx-toastr';
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { SendgridService } from 'ngx-sendgrid';
+import { AngularFireFunctions } from '@angular/fire/functions';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -47,7 +49,7 @@ export class OrdersComponent implements OnInit {
       city: '',
     }
 
-  constructor(private service: SendgridService, private productService: ProductsService, private toastr: ToastrService, private userService: UsersService, public afAuth: AngularFireAuth, private firestore: AngularFirestore) {
+  constructor(private http: HttpClient,private service: SendgridService, private productService: ProductsService, private toastr: ToastrService, private userService: UsersService, public afAuth: AngularFireAuth, private firestore: AngularFirestore) {
     this.orderproducts = userService.getData();
 
     for (let i = 0; i < this.orderproducts.length; i++) {
@@ -136,8 +138,8 @@ export class OrdersComponent implements OnInit {
         this.totalPrice = 0;
         this.userService.deleteAllData();
         this.myOrder = true;
-        this.sendEmail();
-      }
+        // this.sendEmail();
+          }
     }
   }
 
@@ -216,11 +218,18 @@ export class OrdersComponent implements OnInit {
    let from='zhyshkovych16@gmail.com';
    let subject='Orders';
    let content='content';
-   console.log('email');
+  //  console.log('email');
    
-      this.service.BasicEmailToSingleUser( to, from, subject, content).subscribe(result=>{
-      console.log('resemail',result)
-      })
+  //  let endpoint = 'https://your-project.cloudfunctions.net/httpEmail'
+  //  const data = {
+  //   toEmail: 'roman123q@ukr.net',
+  //   toName: 'Jeff Delaney'
+  // }
+
+  // this.http.post(endpoint, data).subscribe()
+      // this.service.BasicEmailToSingleUser( to, from, subject, content).subscribe(result=>{
+      // console.log('resemail',result)
+      // })
    
   //   let data = {
   //     'name': 'roma',

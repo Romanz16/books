@@ -22,6 +22,7 @@ import { MyAccountComponent } from './pages/login/my-account/my-account.componen
 import { OrdersComponent } from './pages/orders/orders.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: '/home/newArrivals', pathMatch: 'full' },
   {

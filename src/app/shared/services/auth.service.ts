@@ -87,7 +87,14 @@ export class AuthService {
     const user = JSON.parse(localStorage.getItem('user'));
     return (user !== null && user.emailVerified !== false) ? true : false;
   }
-
+  public isAdmin(): boolean {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return (user.email === 'zhyshkovych16@gmail.com' && user !== null && user.emailVerified !== false) ? true : false;
+    // if (user === null) { this.router.navigate(['/login']); }
+    // else if (user.email === 'zhyshkovych16@gmail.com' && user.emailVerified !== false) {
+    //   this.router.navigate(['/login']);
+    // }
+  }
   // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider());

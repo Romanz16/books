@@ -35,6 +35,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
 
 import { MatSliderModule } from '@angular/material/slider';
 import { ArrayfilterPipe } from './shared/pipes/arrayfilter.pipe';
@@ -125,6 +126,7 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, BrowserAnimationsModule, // imports firebase/storage only needed for storage features
+    AngularFireFunctionsModule,
     MatSliderModule,
     NgxPaginationModule,
     NgMultiSelectDropDownModule.forRoot(),

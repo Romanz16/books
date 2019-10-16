@@ -11,6 +11,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
 import { ISubCategory } from 'src/app/shared/interfaces/subcategory.interface';
 import { SubCategoryService } from 'src/app/shared/services/sub-category.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -53,8 +55,8 @@ export class AdminDiscountsComponent implements OnInit {
   sort1: Array<number> = [3, 3, 3, 3, 3, 3, 3];
   obj: Object;
   p: number = 1;
-  constructor(private subcategoryService: SubCategoryService, private productService: ProductsService, private categoryService: CategoryService, private prStorage: AngularFireStorage, private firestore: AngularFirestore) {
-
+  constructor(public router: Router, public authService: AuthService, private subcategoryService: SubCategoryService, private productService: ProductsService, private categoryService: CategoryService, private prStorage: AngularFireStorage, private firestore: AngularFirestore) {
+    if (!this.authService.isAdmin()){this.router.navigate(['/login']);};
   }
 
   ngOnInit() {

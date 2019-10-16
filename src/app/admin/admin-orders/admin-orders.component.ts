@@ -4,6 +4,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { IProduct } from 'src/app/shared/interfaces/product.interface';
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { OrdersService } from 'src/app/shared/services/orders.service';
+import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-orders',
@@ -18,7 +20,9 @@ export class AdminOrdersComponent implements OnInit {
   adminProducts: Array<IProduct>;
   uid: string = '';
   sort1: Array<number> = [3, 3, 3, 3, 3, 3, 3];
-  constructor(private productCart: OrdersService, private productService: ProductsService, public authService: AuthService, public afAuth: AngularFireAuth) {
+  p: number = 1;
+  constructor(public router: Router,private productCart: OrdersService, private productService: ProductsService, public authService: AuthService, public afAuth: AngularFireAuth) {
+    if (!this.authService.isAdmin()){this.router.navigate(['/login']);};
   }
 
   ngOnInit() {
@@ -34,6 +38,9 @@ export class AdminOrdersComponent implements OnInit {
       }
 
     });
+    
+    // if(this.userEmail !== 'zhyshkovych16@gmail.com'){this.router.navigate(['/login']);}
+
     this.productService.getProducts().subscribe(
       myArray => {
         this.adminProducts = myArray.map(item => {

@@ -87,9 +87,11 @@ header {
       }
 
       .cart {
-        min-width: 301px;
+        // min-width: 301px;
+        min-width: 324px;
         height: 70px;
         display: flex;
+        justify-content: center;
 
         .cartList {
           display: flex;
@@ -254,7 +256,7 @@ header {
 
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .mycontainer{
     display: flex;
     flex-direction: row;
@@ -281,6 +283,9 @@ header {
   }
 
 
+
+}
+@media screen and (max-width: 400px) {
   .wrapper {
     justify-content: center !important;
 

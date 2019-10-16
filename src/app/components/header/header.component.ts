@@ -98,7 +98,7 @@ export class HeaderComponent implements OnInit {
     }
   }
   onResize(event) {
-    if (event.target.innerWidth > 400) {
+    if (event.target.innerWidth > 600) {
       this.ulMenuHeight = '41px';
       this.ulMenu = 'flex';
     } else {

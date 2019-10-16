@@ -20,8 +20,8 @@ $font-HelveticaRegular: 'HelveticaRegular';
     border-left: 1px solid #d8dce0;
     border-right: 1px solid #d8dce0;
     border-bottom: 1px solid #d8dce0;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     padding: 5px;
   }
 }
@@ -47,15 +47,24 @@ $font-HelveticaRegular: 'HelveticaRegular';
   left:100px;
   img{
     width: 190px;
-    height: 260px;
+    max-height: 250px;
     border-radius: 8px;
-    border-top-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-top-left-radius: 27px;
+    border-bottom-right-radius: 25px;
+    box-shadow: 0 0 10px rgba(0,0,0,1); /* Параметры тени */
   }
 
 }
 .carousel-caption{
+  bottom: 20px;
+  left: 30%;
   h3{
-    font-size: 22px;
+    font-size: 26px;
+    padding-bottom: 20px;
+    cursor: pointer;
+  }
+  p{
+    max-height: 50px;
+    overflow: hidden;
   }
 }

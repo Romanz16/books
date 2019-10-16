@@ -4,6 +4,8 @@ import { CategoryService } from 'src/app/shared/services/category.service';
 import { Category } from 'src/app/shared/classes/category.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-category',
@@ -23,7 +25,9 @@ export class AdminCategoryComponent implements OnInit {
   editStatus: boolean;
 
   sort1: Array<number> = [3, 3];
-  constructor(private categoryService: CategoryService, private firestore: AngularFirestore) { }
+  constructor(public router: Router, public authService: AuthService, private categoryService: CategoryService, private firestore: AngularFirestore) {
+    if (!this.authService.isAdmin()){this.router.navigate(['/login']);}; //page for only admin
+   }
 
   ngOnInit() {
     this.getCategories();
