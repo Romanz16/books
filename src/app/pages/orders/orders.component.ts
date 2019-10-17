@@ -7,14 +7,19 @@ import { IOrderProduct } from 'src/app/shared/interfaces/orderproduct';
 import { ToastrService } from 'ngx-toastr';
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { SendgridService } from 'ngx-sendgrid';
-import { AngularFireFunctions } from '@angular/fire/functions';
+// import { AngularFireFunctions } from '@angular/fire/functions';
 import { HttpClient } from '@angular/common/http';
+// import * as nodemailer from 'nodemailer';
+
+
+
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
+
   // products: Array<IProduct> = [];
   // count: Array<string> = [];
   orderproducts: Array<IOrderProduct> = [];
@@ -49,14 +54,14 @@ export class OrdersComponent implements OnInit {
       city: '',
     }
 
-  constructor(private http: HttpClient,private service: SendgridService, private productService: ProductsService, private toastr: ToastrService, private userService: UsersService, public afAuth: AngularFireAuth, private firestore: AngularFirestore) {
+  constructor(private http: HttpClient, private productService: ProductsService, private toastr: ToastrService, private userService: UsersService, public afAuth: AngularFireAuth, private firestore: AngularFirestore) {
     this.orderproducts = userService.getData();
 
     for (let i = 0; i < this.orderproducts.length; i++) {
       this.totalPrice += this.orderproducts[i].count * +this.orderproducts[i].price;
     }
   }
-
+ 
   ngOnInit() {
     this.afAuth.authState.subscribe(user => {
       if (user) {
@@ -138,6 +143,7 @@ export class OrdersComponent implements OnInit {
         this.totalPrice = 0;
         this.userService.deleteAllData();
         this.myOrder = true;
+
         // this.sendEmail();
           }
     }
@@ -214,42 +220,47 @@ export class OrdersComponent implements OnInit {
     this.totalPriceFunc();
   }
   public sendEmail(): void {
-   let to='roman123q@ukr.net';
-   let from='zhyshkovych16@gmail.com';
-   let subject='Orders';
-   let content='content';
-  //  console.log('email');
+    // let transporter = nodemailer.createTransport({
+    //   service: 'gmail',
+    //   host: 'smtp.gmail.com',
+    //   secure: 'true',
+    //   port: '465',
+    //   auth: {
+    //     user: 'zhyshkovych16@gmail.com', // must be Gmail
+    //     pass: 'romanz16101988'
+    //   }
+    // });
    
-  //  let endpoint = 'https://your-project.cloudfunctions.net/httpEmail'
-  //  const data = {
-  //   toEmail: 'roman123q@ukr.net',
-  //   toName: 'Jeff Delaney'
-  // }
-
-  // this.http.post(endpoint, data).subscribe()
-      // this.service.BasicEmailToSingleUser( to, from, subject, content).subscribe(result=>{
-      // console.log('resemail',result)
-      // })
-   
-  //   let data = {
-  //     'name': 'roma',
-  //     'email': 'roman123q@ukr.net',
-  //     'contact': '0984543543',
-  //     'message' : 'message'
-  // };
-  //   let http = new XMLHttpRequest();
-  //   let url = 'get_data.php';
-  //   let params = 'orem=ipsum&name=binny';
-  //   http.open('POST', url, true);
-
-  //   //Send the proper header information along with the request
-  //   http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-  //   http.onreadystatechange = function () {//Call a function when the state changes.
-  //     if (http.readyState == 4 && http.status == 200) {
-  //       alert(http.responseText);
-  //     }
-  //   }
-  //   http.send(params);
+    // var mailOptions = {
+    //   from: 'zhyshkovych16@gmail.com',
+    //   to: 'zhyshkovych16@gmail.com', // must be Gmail
+    //   cc:`roma <zhyshkovych16@gmail.com>`,
+    //   subject: 'Sending Email using Node.js',
+    //   html: `
+    //           <table style="width: 100%; border: none">
+    //             <thead>
+    //               <tr style="background-color: #000; color: #fff;">
+    //                 <th style="padding: 10px 0">Name</th>
+    //                 <th style="padding: 10px 0">E-mail</th>
+    //               </tr>
+    //             </thead>
+    //             <tbody>
+    //               <tr>
+    //                 <th style="text-align: center">roma</th>
+    //                 <td style="text-align: center">zhyshkovych16@gmail.com</td>
+    //               </tr>
+    //             </tbody>
+    //           </table>
+    //         `
+    // };
+  
+    // transporter.sendMail(mailOptions, (error, info) => {
+    //   if (error) {
+    //     console.log(error);
+    //   } else {
+    //     console.log('Email sent: ' + info.response);
+    //   }
+    // });
   }
+
 }

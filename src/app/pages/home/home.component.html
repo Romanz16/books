@@ -8,7 +8,7 @@
         <div class="imgbook"> <img [src]="prod.img" alt="Random third slide"></div>
         <div class="carousel-caption">
           <h3  [routerLink]="[ '/category',prod.catAlias,prod.subCatAlias,prod.alias,'infoBook' ]">{{prod.title}}</h3>
-          <p>{{prod.description}}</p>
+          <p  [routerLink]="[ '/category',prod.catAlias,prod.subCatAlias,prod.alias,'infoBook' ]">{{prod.description}}</p>
         </div>
        
       </ng-template>

@@ -1,7 +1,7 @@
 <header>
   <div class="header-top">
     <div class="mycontainer">
-      <span *ngIf="userLogin">{{userLogin}}</span>
+      <span [routerLink]="['/login/my-account']" *ngIf="userLogin">{{userLogin}}</span>
       <a *ngIf="!userLogin" [routerLink]="['/login']">Вхід</a>
       <a *ngIf="!userLogin" [routerLink]="['/login/sign-up']">Зареєструватись</a>
       <a *ngIf="userLogin" (click)="authService.SignOut()">Вихід</a>
