@@ -1,7 +1,7 @@
 <header>
   <div class="header-top">
     <div class="mycontainer">
-      <span [routerLink]="['/login/my-account']" *ngIf="userLogin">{{userLogin}}</span>
+      <span class="userLogin" [routerLink]="['/login/my-account']" *ngIf="userLogin">{{userLogin}}</span>
       <a *ngIf="!userLogin" [routerLink]="['/login']">Вхід</a>
       <a *ngIf="!userLogin" [routerLink]="['/login/sign-up']">Зареєструватись</a>
       <a *ngIf="userLogin" (click)="authService.SignOut()">Вихід</a>
@@ -9,7 +9,7 @@
       <!-- <a href="">Help</a>  -->
     </div>
   </div>
- 
+
   <div class="header-center">
     <div class="mycontainer">
       <div class="wrapper">
@@ -43,10 +43,31 @@
             </div>
           </div> -->
         </div>
-
       </div>
+
+      <div class="wrapperMin">
+        <div class="logo" routerLink="home">
+          <img src="../../../assets/images/logo.png" alt="">
+        </div>
+        <div class="cartMin">
+          <div class="price">
+            <img src="../../../assets/images/Shape_9.png" alt="">
+            {{totalPrice}}₴ <button type="button" [routerLink]="['/orders']" class="btn btn-dark checkout"
+              value="">замовити</button>
+            <div (click)="search()" class="searchBtn">Пошук</div>
+          </div>
+        </div>
+        <div class="searchMin">
+            <input type="text" [(ngModel)]="searchText" name="searchText">
+            <div [routerLink]="[ '/search', searchText ]"><img src="../../../assets/images/Shape_7.png" alt="">
+              <span class="searchBtn">Пошук</span>
+            </div>
+          </div>
+      </div>
+
     </div>
   </div>
+
   <nav class="header-menu">
     <div class="mycontainer">
       <div class="menuIcon" (click)="menu()"><img src="../../../assets/images/menuIcon.png" alt=""></div>

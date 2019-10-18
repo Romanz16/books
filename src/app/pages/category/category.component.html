@@ -1,5 +1,7 @@
 <!-- <p>category works!{{discountId}}</p> -->
-<div class="content">
+<div class="content" (window:resize)="onResize($event)">
+  <div (click)="filter()" class="filterBtn">Ф і л ь т е р</div>
+
   <div class="filter">
     <form>
       <div class="container-fluid">
@@ -99,12 +101,6 @@
     </div>
     <pagination-controls class="my-pagination"  autoHide="true" (pageChange)="p = $event" previousLabel="Назад" nextLabel="Вперед">
     </pagination-controls>
-    <!-- <div class="pagination">
-      <div>1</div>
-      <div>2</div>
-      <div class="active">3</div>
-      <div>4</div>
-      <div>5</div>
-    </div> -->
+  
   </div>
 </div>

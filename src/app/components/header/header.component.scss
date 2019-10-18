@@ -16,7 +16,8 @@ header {
     height: 28px;
     text-align: right;
 
-    a,span {
+    a,
+    span {
       margin-left: 25px;
       color: #ffffff;
       font-family: $font-SegoeWPN;
@@ -28,8 +29,9 @@ header {
   }
 
   .header-center {
-    min-height: 112px;
+    min-height: 94px;
     background-color: black;
+    // overflow: hidden;
 
     .wrapper {
       display: flex;
@@ -39,7 +41,7 @@ header {
 
       .logo {
         margin: 19px 0;
-      cursor: pointer;
+        cursor: pointer;
       }
 
       .search {
@@ -88,7 +90,7 @@ header {
 
       .cart {
         // min-width: 301px;
-        min-width: 324px;
+        min-width: 295px;
         height: 70px;
         display: flex;
         justify-content: center;
@@ -183,23 +185,124 @@ header {
   }
 }
 
+.wrapperMin {
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  // align-items: center;
+
+  .logo {
+    margin: 19px 0;
+    cursor: pointer;
+  }
+
+  .cartMin {
+    margin-left: 5px;
+    height: 70px;
+
+    .price {
+      margin-top: 18px;
+      color: $color-grey3;
+      font-family: $font-SegoeWPN;
+      font-size: 27px;
+      font-weight: 700;
+      line-height: 26px;
+
+      button {
+        margin: 0;
+        padding: 0;
+        width: 81px;
+        height: 26px;
+        margin-left: 8px;
+        color: #ffffff;
+        font-family: $font-SegoeWPN;
+        font-size: 15px;
+        font-weight: 400;
+        background-image: linear-gradient(to top, #242424 0%, #424242 100%);
+
+      }
+      .searchBtn {
+        margin: 4px 0 0 2px;
+        width:58px;
+        padding: 2px 3px;
+        color: white;
+        font-size: 16px;
+        line-height: 20px;
+        height: 24px;
+        background-color: $color-green;
+        border-radius: 2px;
+      }
+    }
+  }
+  .searchMin {
+    display: none;
+    width: 100%;
+    height: 40px;
+    background-color: $color-green;
+    border-radius: 2px;
+    // display: flex;
+
+    input {
+      width: 63%;
+      height: 32px;
+      margin: 4px;
+      color: $color-grey5;
+      border: 1px solid white;
+      border-radius: 1px;
+      padding: 0 5px;
+    }
+
+    input[type=text]:focus {
+      border: none;
+    }
+
+    div:hover {
+      cursor: pointer;
+    }
+
+    div {
+      margin-right: 4px;
+
+      span {
+        float: right;
+        color: #ffffff;
+        font-family: $font-SegoeWPN;
+        font-size: 23px;
+        font-weight: 400;
+        line-height: 40px;
+      }
+
+      img {
+        margin: 8px 7px 8px 9px;
+
+      }
+    }
+  }
+}
+
+
 // menu =====================
 .header-menu {
   height: 41px;
   border-bottom: 1px solid #d8dce0;
 
- 
+
 }
-.menuIcon{
+
+.menuIcon {
   width: 41px;
   height: 41px;
   display: none;
   cursor: pointer;
-  img{
+
+  img {
     width: 41px;
     height: 41px;
   }
 }
+
 .ulMenu {
 
   display: flex;
@@ -236,7 +339,8 @@ header {
   background-color: black;
   color: #ffffff;
 }
-.checkout{
+
+.checkout {
   padding: 0 3px;
 }
 
@@ -257,23 +361,25 @@ header {
 }
 
 @media screen and (max-width: 600px) {
-  .mycontainer{
+  .mycontainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
-   
+
   }
-  .ulMenu{
+
+  .ulMenu {
     flex-direction: column !important;
     align-items: center !important;
     overflow: hidden;
     display: none;
     width: 80%;
   }
-  .menuIcon{
+
+  .menuIcon {
     display: block !important;
   }
- 
+
   .menu {
     z-index: 10;
     line-height: 34px !important;
@@ -285,16 +391,25 @@ header {
 
 
 }
-@media screen and (max-width: 400px) {
+
+@media screen and (max-width: 460px) {
+  .userLogin {
+    display: none;
+  }
+
   .wrapper {
-    justify-content: center !important;
+    display: none !important;
+  }
 
-    .search {
-      margin-top: 15px !important;
+  .wrapperMin {
+    display: flex;
+  }
 
-      .serchBtn {
-        display: none;
-      }
-    }
+  .header-center {
+    height: 94px;
+  }
+
+  .logo {
+    margin: 9px 0 !important;
   }
 }

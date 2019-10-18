@@ -34,6 +34,7 @@ export class CategoryComponent implements OnInit {
   min: number;
   max: number;
   p: number = 1;
+  checkFilter = false;
   constructor(private route: ActivatedRoute,
     private location: Location, private subcategoryService: SubCategoryService,
     private categoryService: CategoryService, private firestore: AngularFirestore,
@@ -209,10 +210,12 @@ export class CategoryComponent implements OnInit {
     let today = new Date();
     let year = today.getFullYear();
     min = year;
+    // console.log('min',min);
+    
     if (this.subcat) {
       this.products.filter(el => {
         if (el.subCatAlias === this.subcat) {
-          if (+el.year < min) {
+          if (+el.year < min ) {
             min = +el.year;
           }
         }
@@ -234,12 +237,13 @@ export class CategoryComponent implements OnInit {
         });
       }
     }
+    // console.log('min2',min);
     return min;
   }
 
 
   public maxYear(): number {
-    let max =2010;
+    let max = 2010;
     if (this.subcat) {
       this.products.filter(el => {
         if (el.subCatAlias === this.subcat) {
@@ -267,4 +271,22 @@ export class CategoryComponent implements OnInit {
     }
     return max;
   }
+  public getSel(sel: string): HTMLElement {
+    return document.querySelector(sel);
+  }
+  public filter(): void {
+    if (!this.checkFilter) {
+      this.getSel('.filter').style.display = 'block';
+      this.checkFilter = true;
+    } else {
+      this.getSel('.filter').style.display = 'none';
+      this.checkFilter = false;
+    }
+  }
+  onResize(event) {
+    if (event.target.innerWidth > 500) {
+      this.getSel('.filter').style.display = 'block';
+    }
+  }
+
 }

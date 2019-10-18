@@ -35,6 +35,7 @@ export class HeaderComponent implements OnInit {
   userLogin: string = '';
   // products: Array<IProduct> = [];
   products: Array<IOrderProduct> = [];
+  checkSearch = false;
   constructor(public afAuth: AngularFireAuth, public authService: AuthService, private userService: UsersService, private categoryService: CategoryService, private firestore: AngularFirestore) {
     this.afAuth.authState.subscribe(user => {
       if (user) {
@@ -47,7 +48,7 @@ export class HeaderComponent implements OnInit {
 
     });
     this.products = this.userService.getData();
-    if (this.products !==null) {
+    if (this.products !== null) {
       this.count = this.products.length;
       for (let i = 0; i < this.products.length; i++) {
         this.totalPrice += +(this.products[i].price);
@@ -57,11 +58,11 @@ export class HeaderComponent implements OnInit {
 
     this.userService.onproducts.subscribe(cnt => {
       this.products = cnt;
-      if (this.products!=null) {
+      if (this.products != null) {
         this.count = this.products.length;
         this.totalPrice = 0;
         for (let i = 0; i < this.products.length; i++) {
-          this.totalPrice += +(this.products[i].price)*this.products[i].count;
+          this.totalPrice += +(this.products[i].price) * this.products[i].count;
           this.totalPrice = +this.totalPrice.toFixed(2);
         }
       }
@@ -84,8 +85,6 @@ export class HeaderComponent implements OnInit {
     );
   }
 
-
-
   public menu(): void {
     if (this.checkMenu) {
       this.ulMenuHeight = '205px';
@@ -104,5 +103,28 @@ export class HeaderComponent implements OnInit {
     } else {
       this.ulMenu = 'none';
     }
+    if (event.target.innerWidth > 460) {
+      this.getSel('.header-center').style.height = '114px';
+      this.getSel('.searchMin').style.display = 'none';
+    } else{
+      this.getSel('.header-center').style.height = '94px';
+    }
   }
+
+  public getSel(sel: string): HTMLElement {
+    return document.querySelector(sel);
+  }
+  
+  public search(): void {
+    if (!this.checkSearch) {
+      this.getSel('.header-center').style.height = '130px';
+      this.getSel('.searchMin').style.display = 'flex';
+      this.checkSearch = true;
+    } else {
+      this.getSel('.header-center').style.height = '94px';
+      this.getSel('.searchMin').style.display = 'none';
+      this.checkSearch = false;
+    }
+  }
+
 }

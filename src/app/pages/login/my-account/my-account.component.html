@@ -51,35 +51,37 @@
 
   <div *ngFor="let order of products | sortByDate; let i=index">
     <div class="date">{{order.date.toDate() | date: 'dd-MM-yyyy H:mm'}}</div>
-    <table *ngIf="!myOrder" class="table table-striped table-bordered table-sm">
-      <thead>
-        <tr>
-          <th scope="col">Назва</th>
-          <th scope="col">ПідКатегорія</th>
-          <th scope="col">Автор</th>
-          <th scope="col">Ціна</th>
-          <th scope="col">Кількість</th>
-          <th scope="col">Рік</th>
-          <th scope="col">Видавництво</th>
-          <th scope="col">image</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let prod of adminProducts | prodById:order; let id=index">
+    <div class="table-responsive">
+      <table *ngIf="!myOrder" class="table table-striped table-bordered table-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Назва</th>
+            <th scope="col">ПідКатегорія</th>
+            <th scope="col">Автор</th>
+            <th scope="col">Ціна</th>
+            <th scope="col">Кількість</th>
+            <th scope="col">Рік</th>
+            <th scope="col">Видавництво</th>
+            <th scope="col">image</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prod of adminProducts | prodById:order; let id=index">
 
-          <td class="href" [routerLink]="[ '/category',prod.catAlias,prod.subCatAlias,prod.alias,'infoBook' ]">
-            {{prod.title}}</td>
-          <td>{{prod.subCatTitle}}</td>
-          <td>{{prod.author}}</td>
-          <td>{{prod.price}}</td>
-          <td>{{order.uorderCount[id]}}</td>
-          <td>{{prod.year}}</td>
-          <td>{{prod.publishingHouse}}</td>
+            <td class="href" [routerLink]="[ '/category',prod.catAlias,prod.subCatAlias,prod.alias,'infoBook' ]">
+              {{prod.title}}</td>
+            <td>{{prod.subCatTitle}}</td>
+            <td>{{prod.author}}</td>
+            <td>{{prod.price}}</td>
+            <td>{{order.uorderCount[id]}}</td>
+            <td>{{prod.year}}</td>
+            <td>{{prod.publishingHouse}}</td>
 
-          <td><img [src]="prod.img" width="50px;" height="70px" alt=""></td>
-        </tr>
-      </tbody>
-    </table>
+            <td><img [src]="prod.img" width="50px;" height="70px" alt=""></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="price">Разом: {{order.totalPrice}}грн</div>
     <hr>
   </div>

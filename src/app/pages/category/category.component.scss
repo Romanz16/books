@@ -9,8 +9,26 @@ $color-green: #79b260;
   display: flex;
   justify-content: space-around;
 
+  .filterBtn {
+    padding: 5px 2px 2px 0px;
+    display: none;
+    width: 20px;
+    height: 125px;
+    background-color: $color-green;
+    border: 1px solid $color-green;
+    color: white;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-right: 7px;
+    text-align: center;
+    font-weight: 400;
+    font-family: $font-HelveticaRegular;
+    cursor: pointer;
+    transition: 1000;
+  }
+
   .filter {
-    width: 188px;
+    width: 190px;
     min-height: 864px;
     border: 1px solid #d8dce0;
     border-radius: 5px;
@@ -183,31 +201,19 @@ label {
   font-weight: 400;
 }
 
-// .pagination {
-//   position: absolute;
-//   bottom: 0;
-//   right: 25px;
-//   color: #646464;
-//   font-family: $font-HelveticaRegular;
-//   font-size: 16px;
-//   font-weight: 300;
-//   line-height: 30px;
-
-//   div {
-//     margin: 0 3px;
-//     padding: 0 8px;
-//     cursor: pointer;
-//   }
-
-//   .active {
-//     background-color: #e0e0e0;
-//     border-bottom: 4px solid $color-green;
-//   }
-// }
-
-
-@media screen and (max-width: 400px) {
-  .price {
+@media screen and (max-width: 500px) {
+  .filter {
     display: none;
   }
+
+  .filterBtn {
+    display: block !important;
+  }
+
 }
+
+// @media screen and (max-width: 400px) {
+//   .price {
+//     display: none;
+//   }
+// }

@@ -34,38 +34,51 @@ $font-HelveticaRegular: 'HelveticaRegular';
   font-size: 15px;
   font-weight: 300;
   line-height: 30px;
- 
+
 }
+
 .active {
   color: #464646 !important;
   font-size: 18px !important;
   font-weight: 400 !important;
 }
-.imgbook{
+
+.imgbook {
   position: absolute;
-  top:20px;
-  left:100px;
-  img{
+  top: 20px;
+  left: 100px;
+
+  img {
     width: 190px;
     max-height: 270px;
     border-radius: 8px;
     border-top-left-radius: 27px;
     border-bottom-right-radius: 25px;
-    box-shadow: 0 0 10px rgba(0,0,0,1); /* Параметры тени */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    /* Параметры тени */
   }
 
 }
-.carousel-caption{
+
+.carousel-caption {
   bottom: 20px;
   left: 30%;
-  h3{
+
+  h3 {
     font-size: 26px;
     padding-bottom: 20px;
     cursor: pointer;
   }
-  p{
+
+  p {
     max-height: 50px;
     overflow: hidden;
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .slider {
+    display: none;
   }
 }
