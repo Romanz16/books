@@ -4,50 +4,52 @@
   <h2>Оформити Замовлення</h2>
   <div *ngIf="myOrder">
     <div id="toastContainer"></div>
- 
+
     <h2>Замовлення успішно опрацьовано!</h2>
     <h2 *ngIf="userEmail!==''">Історію своїх замовлень ви можете простежити на сторінці <a href=""
         [routerLink]="['/login/my-account']"> Мій
         акаунт</a></h2>
   </div>
-  <table *ngIf="!myOrder" class="table table-striped table-bordered table-sm">
-    <thead>
-      <tr>
-        <th scope="col">Назва</th>
-        <th scope="col">ПідКатегорія</th>
-        <th scope="col">Автор</th>
-        <th scope="col">Ціна</th>
-        <th scope="col">Кількість</th>
-        <th scope="col">Рік </th>
-        <th scope="col">Видавництво</th>
-        <th scope="col">Книга</th>
-        <th scope="col">Видалити</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let prod of orderproducts | paginate: { itemsPerPage: 20, currentPage: p }; let i=index">
-        <td class="href" [routerLink]="[ '/category',prod.catAlias,prod.subCatAlias,prod.alias,'infoBook' ]">
-          {{prod.title}}</td>
-        <td>{{prod.subCatTitle}}</td>
-        <td>{{prod.author}}</td>
-        <td>{{prod.price}}</td>
-        <td style="text-align: center;">
-          <span (click)="decCount(i)" class="decCount">-</span>
-          {{prod.count}}
-          <span (click)="incCount(i)" class="incCount">+</span>
-          <!-- <input type="number" (click)="counter()" [(ngModel)]="prod.count" name="prod.count" min="1" value="1"> -->
-        </td>
-        <td>{{prod.year}}</td>
-        <td>{{prod.publishingHouse}}</td>
+  <div class="table-responsive">
+    <table *ngIf="!myOrder" class="table table-striped table-bordered table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Назва</th>
+          <th scope="col">ПідКатегорія</th>
+          <th scope="col">Автор</th>
+          <th scope="col">Ціна</th>
+          <th scope="col">Кількість</th>
+          <th scope="col">Рік </th>
+          <th scope="col">Видавництво</th>
+          <th scope="col">Книга</th>
+          <th scope="col">Видалити</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prod of orderproducts | paginate: { itemsPerPage: 20, currentPage: p }; let i=index">
+          <td class="href" [routerLink]="[ '/category',prod.catAlias,prod.subCatAlias,prod.alias,'infoBook' ]">
+            {{prod.title}}</td>
+          <td>{{prod.subCatTitle}}</td>
+          <td>{{prod.author}}</td>
+          <td>{{prod.price}}</td>
+          <td style="text-align: center;">
+            <span (click)="decCount(i)" class="decCount">-</span>
+            {{prod.count}}
+            <span (click)="incCount(i)" class="incCount">+</span>
+            <!-- <input type="number" (click)="counter()" [(ngModel)]="prod.count" name="prod.count" min="1" value="1"> -->
+          </td>
+          <td>{{prod.year}}</td>
+          <td>{{prod.publishingHouse}}</td>
 
-        <td><img [src]="prod.img" width="50px;" height="70px" alt=""></td>
+          <td><img [src]="prod.img" width="50px;" height="70px" alt=""></td>
 
-        <td>
-          <button class="btn btn-dark" (click)="deleteProduct(prod,i)">Видалити</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          <td>
+            <button class="btn btn-dark" (click)="deleteProduct(prod,i)">Видалити</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <div *ngIf="!myOrder && totalPrice" class="price">Разом: {{totalPrice}}грн</div>
 
   <!-- <div class="auth" *ngIf="userEmail===''">Оформляти замовлення можуть лише авторизовані користувачі. <a
@@ -63,7 +65,7 @@
       <div> <button type="button" (click)="orders()" class="btn btn-primary btn-block">Замовити</button></div>
     </div>
   </div>
- 
+
   <div *ngIf="userEmail===''">
     <div *ngIf="!myOrder" class="login">
       <!-- <div *ngIf="photoURL"><img class="photo" width="100px" height="100px" [src]="photoURL" alt=""></div> -->
