@@ -103,11 +103,11 @@ export class HeaderComponent implements OnInit {
     } else {
       this.ulMenu = 'none';
     }
-    if (event.target.innerWidth > 460) {
-      this.getSel('.header-center').style.height = '114px';
+    if (event.target.innerWidth > 490) {
+      this.getSel('.header-center').style.minHeight = '114px';
       this.getSel('.searchMin').style.display = 'none';
     } else{
-      this.getSel('.header-center').style.height = '94px';
+      this.getSel('.header-center').style.minHeight = '94px';
     }
   }
 
@@ -117,11 +117,11 @@ export class HeaderComponent implements OnInit {
   
   public search(): void {
     if (!this.checkSearch) {
-      this.getSel('.header-center').style.height = '130px';
+      this.getSel('.header-center').style.minHeight = '130px';
       this.getSel('.searchMin').style.display = 'flex';
       this.checkSearch = true;
     } else {
-      this.getSel('.header-center').style.height = '94px';
+      this.getSel('.header-center').style.minHeight = '94px';
       this.getSel('.searchMin').style.display = 'none';
       this.checkSearch = false;
     }

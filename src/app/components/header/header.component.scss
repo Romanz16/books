@@ -346,7 +346,7 @@ header {
 
 
 
-@media screen and (max-width: 778px) {
+@media screen and (max-width: 780px) {
   .wrapper {
     flex-wrap: wrap;
   }
@@ -357,7 +357,9 @@ header {
     margin-bottom: 10px;
     order: 4;
   }
-
+  // #header-center {
+  //       min-height: 114px !important;
+  //     }
 }
 
 @media screen and (max-width: 600px) {
@@ -391,7 +393,11 @@ header {
 
 
 }
-
+// @media screen and (max-width: 780px) {
+//   .header-center {
+//     min-height: 114px !important;
+//   }
+// }
 @media screen and (max-width: 460px) {
   .userLogin {
     display: none;
@@ -405,9 +411,9 @@ header {
     display: flex;
   }
 
-  .header-center {
-    height: 94px;
-  }
+  // .header-center {
+  //   height: 94px;
+  // }
 
   .logo {
     margin: 9px 0 !important;
