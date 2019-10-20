@@ -4,7 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { IProduct } from 'src/app/shared/interfaces/product.interface';
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { OrdersService } from 'src/app/shared/services/orders.service';
-import { User } from 'src/app/shared/interfaces/myuser.interface';
+// import { User } from 'src/app/shared/interfaces/myuser.interface';
 import { ToastrService } from 'ngx-toastr';
 import { AngularFirestore } from '@angular/fire/firestore';
 
@@ -35,6 +35,7 @@ export class MyAccountComponent implements OnInit {
       city: '',
     }
   ];
+  p: number = 1;
   constructor(private firestore: AngularFirestore, private toastr: ToastrService, private productCart: OrdersService, private productService: ProductsService, public authService: AuthService, public afAuth: AngularFireAuth) {
   }
 

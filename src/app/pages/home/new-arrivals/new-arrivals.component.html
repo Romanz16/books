@@ -1,6 +1,6 @@
 <div class="content">
   <div class="product">
-    <div class="item" *ngFor="let prod of products | filterTopNew:'20'" routerLinkActive="active"
+    <div class="item" *ngFor="let prod of products | filterTopNew:'18'" routerLinkActive="active"
       [routerLink]="[ '/category',prod.catAlias,prod.subCatAlias,prod.alias,'infoBook' ]">
       <div *ngIf="prod.discount[0]" class="offers">{{prod.discount[0]}}</div>
       <img [src]=prod.img [alt]=prod.title [title]=prod.title>

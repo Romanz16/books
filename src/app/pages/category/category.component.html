@@ -83,7 +83,7 @@
     </form>
   </div>
   
-  <div class="books">
+  <div class="books"> 
     <div class="booksWrapper">
       <div class="item"
         *ngFor="let prod of products | filterCategory:category:subcat | filterPrice:price[0]:price[1] | filterAuthor:author | filterYear:year[0]:year[1] | filterBinding:binding | filterPublishing:publishing | paginate: { itemsPerPage: 20, currentPage: p }"

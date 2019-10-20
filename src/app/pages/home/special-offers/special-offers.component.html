@@ -1,6 +1,6 @@
 <div class="content">
   <div class="booksWrapper">
-    <div *ngFor="let prod of products | filterDiscounts| paginate: { itemsPerPage: 20, currentPage: p }">
+    <div *ngFor="let prod of products | filterDiscounts| paginate: { itemsPerPage: 18, currentPage: p }">
       <div *ngIf="prod.discount[0]" class="item" routerLinkActive="active"
         [routerLink]="[ '/category',prod.catAlias,prod.subCatAlias,prod.alias,'infoBook' ]">
         <div class="offers">{{prod.discount[0]}}</div>

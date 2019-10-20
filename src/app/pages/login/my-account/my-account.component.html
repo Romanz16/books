@@ -49,7 +49,7 @@
   </div>
 
 
-  <div *ngFor="let order of products | sortByDate; let i=index">
+  <div *ngFor="let order of products | sortByDate | paginate: { itemsPerPage: 5, currentPage: p }; let i=index">
     <div class="date">{{order.date.toDate() | date: 'dd-MM-yyyy H:mm'}}</div>
     <div class="table-responsive"> 
       <table *ngIf="!myOrder" class="table table-striped table-bordered table-sm">
@@ -85,7 +85,8 @@
     <div class="price">Разом: {{order.totalPrice}}грн</div>
     <hr>
   </div>
-
+  <pagination-controls class="my-pagination"  autoHide="true" (pageChange)="p = $event" previousLabel="Назад" nextLabel="Вперед">
+  </pagination-controls>
 
 
 
