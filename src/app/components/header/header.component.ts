@@ -70,7 +70,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getCategories();
+    this.getCategories(); 
   }
   public getCategories(): void {
     this.categoryService.getCategories().subscribe(
