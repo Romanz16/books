@@ -59,11 +59,11 @@ export class CategoryComponent implements OnInit {
   }
   onSliderChangePrice(selectedValues: number[]) {
     this.price = selectedValues;
-    console.log(this.price);
+    // console.log(this.price);
   }
   onSliderChangeYear(selectedValues: number[]) {
     this.year = selectedValues;
-    console.log(this.year);
+    // console.log(this.year);
   }
   public getProducts(): void {
     this.productService.getProducts().subscribe(

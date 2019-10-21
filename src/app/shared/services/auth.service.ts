@@ -93,7 +93,7 @@ export class AuthService {
     // if (user === null) { this.router.navigate(['/login']); }
     // else if (user.email === 'zhyshkovych16@gmail.com' && user.emailVerified !== false) {
     //   this.router.navigate(['/login']);
-    // }
+    // } 
   }
   // Sign in with Google
   GoogleAuth() {

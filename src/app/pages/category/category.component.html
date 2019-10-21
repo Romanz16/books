@@ -28,7 +28,7 @@
               <h2> Вартість:</h2>
               <div>({{price[0]}}₴-{{price[1]}}₴)</div>
               <npn-slider id="price" [minSelected]="minPrice()" [min]="minPrice()" [maxSelected]="maxPrice()"
-                [max]="maxPrice()" (onChange)="onSliderChangePrice($event)" [step]="10" [showStepIndicator]="true">
+                [max]="maxPrice()" (onChange)="onSliderChangePrice($event)" [step]="1" [showStepIndicator]="false">
               </npn-slider>
             </div>
           </div>
