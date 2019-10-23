@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/shared/interfaces/product.interface';
 import { ProductsService } from 'src/app/shared/services/products.service';
-// import { Product } from 'src/app/shared/classes/product.model';
+// import { Product } from 'src/app/shared/classes/product.model'; 
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { ICategory } from 'src/app/shared/interfaces/category.interface';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
@@ -16,6 +16,7 @@ import { SubCategoryService } from 'src/app/shared/services/sub-category.service
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Router } from "@angular/router";
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -81,7 +82,7 @@ export class AdminProductComponent implements OnInit {
   obj: Object;
   p: number = 1;
   // tslint:disable-next-line: max-line-length
-  constructor( public router: Router, public authService: AuthService, private subcategoryService: SubCategoryService, private productService: ProductsService, private categoryService: CategoryService, private prStorage: AngularFireStorage, private firestore: AngularFirestore) {
+  constructor(private toastr: ToastrService, public router: Router, public authService: AuthService, private subcategoryService: SubCategoryService, private productService: ProductsService, private categoryService: CategoryService, private prStorage: AngularFireStorage, private firestore: AngularFirestore) {
     // this.getProdData();
    if (!this.authService.isAdmin()){this.router.navigate(['/login']);};
   }
@@ -267,6 +268,7 @@ export class AdminProductComponent implements OnInit {
     };
     this.firestore.collection('products').add(this.obj);
     this.resetForm();
+    this.toastr.success('Продукт успішно додано', 'Увага');
   }
 
   public resetForm(form?: NgForm): void {
@@ -303,6 +305,7 @@ export class AdminProductComponent implements OnInit {
   public deleteProduct(obj: IProduct): void {
     this.firestore.doc('products/' + obj.id).delete();
     this.prStorage.storage.refFromURL(obj.img).delete();
+    this.toastr.info('Продукт видалено', 'Увага');
   }
 
   public editProduct(obj: IProduct): void {
@@ -345,7 +348,7 @@ export class AdminProductComponent implements OnInit {
         tmpAuthor[i] = data.author[i];
       }
     }
-    console.log('strtmp', tmpAuthor);
+    // console.log('strtmp', tmpAuthor);
     const mydate = new Date();
     data.alias = this.alias(data.title.toLowerCase());
     this.obj = {
@@ -372,6 +375,7 @@ export class AdminProductComponent implements OnInit {
     this.firestore.doc('products/' + form.value.id).update(this.obj);
     this.resetForm();
     this.editStatus = false;
+    this.toastr.success('Продукт відредаговано', 'Увага');
   }
 
   public sort(name: string, num: number): void {

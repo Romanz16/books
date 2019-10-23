@@ -11,7 +11,7 @@ $color-green: #79b260;
 
 .breadcrumbs {
   padding-left: 15px;
-  height: 29px;
+  min-height: 29px;
   border: 1px solid #d8dce0;
   border-radius: 5px;
   line-height: 29px;
@@ -265,8 +265,14 @@ $color-green: #79b260;
 }
 
 @media screen and (max-width: 670px) {
+  .content{
+    padding-top: 0;
+  }
   .product {
     display: flex;
     flex-wrap: wrap;
+  }
+  .breadcrumbs {
+    display: none;
   }
 }

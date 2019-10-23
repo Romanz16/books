@@ -111,7 +111,7 @@ export class OrdersComponent implements OnInit {
   //   }
   //   this.totalPriceFunc();
   // }
-
+ 
 
   public orders(): void {
     let uorderIdProduct: Array<string> = [];

@@ -8,7 +8,8 @@ import { IProduct } from 'src/app/shared/interfaces/product.interface';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  images = [1, 2, 3].map(() => `https://picsum.photos/1024/300?random&t=${Math.random()}`);
+  // images = [1, 2, 3].map(() => `https://picsum.photos/1024/300?random&t=${Math.random()}`);
+  images = [1, 2, 3].map(() => `../../../assets/slider/${this.randomInteger(1, 17)}.jpg`);
   products: Array<IProduct>;
   constructor(private productService: ProductsService) { }
 
@@ -24,5 +25,8 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-
+public randomInteger(min, max) {
+  let rand = min - 0.5 + Math.random() * (max - min + 1);
+  return Math.round(rand);
+}
 }
