@@ -5,6 +5,7 @@
           <div class="name">{{order.uname}}</div>
           <div class="name">{{order.uemail}}</div>
           <div class="name">{{order.uphone}}</div>
+          <div class="table-responsive"> 
           <table *ngIf="!myOrder"   class="table table-striped table-bordered table-sm">
             <thead>
               <tr>
@@ -35,6 +36,7 @@
               </tr>
             </tbody>
           </table>
+          </div>
           <div class="price">Разом: {{order.totalPrice}}грн</div>
           <hr>
         </div>

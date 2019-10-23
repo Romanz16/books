@@ -1,6 +1,11 @@
-.nav-link{
-    color: #343a40;
+.nav-link {
+  color: #343a40;
 }
-.active{
-    background-color: #343a40!important;
+
+.active {
+  background-color: #343a40 !important;
 }
+#leftMenu {
+    min-width: 120px;
+}
+
