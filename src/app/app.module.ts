@@ -72,6 +72,7 @@ import { SendgridModule,  SendgridService  } from 'ngx-sendgrid';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import {NgxMaskModule, IConfig} from 'ngx-mask';
+import { BoldDirective } from './shared/directives/bold.directive';
 export let options: Partial<IConfig> | (() => Partial<IConfig>);
 @NgModule({
   declarations: [
@@ -110,7 +111,8 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
     OrdersComponent,
     SortByDatePipe,
     ProdByIdPipe,
-    AdminOrdersComponent
+    AdminOrdersComponent,
+    BoldDirective
   ],
   imports: [
     BrowserModule,
